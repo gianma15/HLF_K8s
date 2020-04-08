@@ -1,6 +1,6 @@
 # YAML for launching the orderer
 apiVersion: apps/v1
-kind: Pod
+kind: StatefulSet
 metadata:
   name: bacheca-orderer
   labels:
