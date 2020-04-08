@@ -27,8 +27,8 @@ spec:
         # imagePullPolicy: Always
         env:
           # Points to the orderer.yaml
-          - name: FABRIC_CFG_PATH
-            value: /var/hyperledger/config
+          # - name: FABRIC_CFG_PATH
+          #   value: /var/hyperledger/config
           # Level of logging
           - name: FABRIC_LOGGING_SPEC
             value: DEBUG
