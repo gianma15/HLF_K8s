@@ -3,7 +3,5 @@ apiVersion: storage.k8s.io/v1
 kind: StorageClass
 metadata:
   name: general
-provisioner: kubernetes.io/gce-pd
-parameters:
-  type: pd-standard
-  replication-type: none
+provisioner: kubernetes.io/no-provisioner
+volumeBindingMode: WaitForFirstConsumer
