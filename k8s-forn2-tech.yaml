@@ -28,9 +28,9 @@ spec:
           - name: FABRIC_LOGGING_SPEC
             value: DEBUG
           - name: ORDERER_ADDRESS
-            value: acme-orderer-clusterip:30750
+            value: bacheca-orderer-clusterip:30750
           - name: ORG_CONTEXT
-            value: budget
+            value: forn2
           - name: CORE_PEER_ADDRESS
           # value: forn2-tech-clusterip:31051
             value: 0.0.0.0:31051

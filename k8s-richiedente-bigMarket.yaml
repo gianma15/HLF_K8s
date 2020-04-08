@@ -28,9 +28,9 @@ spec:
           - name: FABRIC_LOGGING_SPEC
             value: DEBUG
           - name: ORDERER_ADDRESS
-            value: acme-orderer-clusterip:30750
+            value: bacheca-orderer-clusterip:30750
           - name: ORG_CONTEXT
-            value: acme
+            value: richiedente
           - name: CORE_PEER_ADDRESS
           # value: bacheca-bigmarket-clusterip:30751
             value: 0.0.0.0:30751
