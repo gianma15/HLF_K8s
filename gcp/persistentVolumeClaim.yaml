@@ -1,7 +1,7 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: example-local-claim
+  name: local-claim
 spec:
   accessModes:
   - ReadWriteOnce
