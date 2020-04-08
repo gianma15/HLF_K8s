@@ -1,0 +1,105 @@
+# YAML for launching the orderer
+apiVersion: apps/v1
+kind: Pod
+metadata:
+  name: forn1-garden
+  labels:
+    app: forn1-garden
+spec:
+  serviceName: forn1-garden
+  replicas: 1
+  selector:
+    matchLabels:
+      app: forn1-garden
+  template:
+    metadata:
+      labels:
+        app: forn1-garden
+    spec:
+      containers:
+      - name: forn1-garden
+        # image used
+        image: gianma15/gianma_repo:gardenForn1:1.0
+        # Uncomment the following during development/testing of the image
+        # imagePullPolicy: Always
+        env:
+          - name: FABRIC_CFG_PATH
+            value: /var/hyperledger/config
+          - name: FABRIC_LOGGING_SPEC
+            value: DEBUG
+          - name: ORDERER_ADDRESS
+            value: acme-orderer-clusterip:30750
+          - name: ORG_CONTEXT
+            value: budget
+          - name: CORE_PEER_ADDRESS
+          # value: forn1-garden-clusterip:30951
+            value: 0.0.0.0:30951
+        volumeMounts:
+        - name: forn1-garden-ledger
+          mountPath: /var/ledger
+        - name: dockersock
+          mountPath: /var/run/docker.sock
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+  volumeClaimTemplates:
+  - metadata: 
+      name: forn1-garden-ledger
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: general
+      resources:
+        requests:
+          storage: 1Gi
+
+
+
+---
+# Expose the port 30951 as ClusterIP
+apiVersion: v1
+kind: Service
+metadata:
+  name: forn1-garden-clusterip
+
+spec:
+  # This defines which pods are going to be represented by this Service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to (eg browser)
+  selector:
+    app: forn1-garden
+
+  ports:
+    - name: forn1-garden-clusterip
+      port: 30951
+    # - name: forn1-garden-cc-clusterip
+    #   port: 30952
+
+  type: ClusterIP
+
+---
+# Expose the port 30951 as node port -  NEEDED if you
+# are interested in connecting to the Pods from the Host
+# machine - keep in mind you would need the IP for the node
+# port service
+apiVersion: v1
+kind: Service
+metadata:
+  name: forn1-garden-nodeport
+
+spec:
+  # This defines which pods are going to be represented by this Service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to (eg browser)
+  selector:
+    app: forn1-garden
+
+  ports:
+    - name: forn1-garden-nodeport-951
+      port: 30951
+      nodePort: 30951
+    - name: forn1-garden-cc-nodeport-952
+      port: 30952
+      nodePort: 30952
+
+  type: NodePort

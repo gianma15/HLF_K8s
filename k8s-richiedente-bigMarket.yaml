@@ -1,0 +1,103 @@
+# YAML for launching the orderer
+apiVersion: apps/v1
+kind: Pod
+metadata:
+  name: bacheca-bigMarket
+  labels:
+    app: bacheca-bigMarket
+spec:
+  serviceName: bacheca-bigMarket
+  replicas: 1
+  selector:
+    matchLabels:
+      app: bacheca-bigMarket
+  template:
+    metadata:
+      labels:
+        app: bacheca-bigMarket
+    spec:
+      containers:
+      - name: bacheca-bigMarket
+        # Image used
+        image: gianma15/gianma_repo:bigMarket:1.0
+        # Uncomment the following during development/testing of the image
+        # imagePullPolicy: Always
+        env:
+          - name: FABRIC_CFG_PATH
+            value: /var/hyperledger/config
+          - name: FABRIC_LOGGING_SPEC
+            value: DEBUG
+          - name: ORDERER_ADDRESS
+            value: acme-orderer-clusterip:30750
+          - name: ORG_CONTEXT
+            value: acme
+          - name: CORE_PEER_ADDRESS
+          # value: bacheca-bigMarket-clusterip:30751
+            value: 0.0.0.0:30751
+        volumeMounts:
+        - name: bacheca-bigMarket-ledger
+          mountPath: /var/ledger
+        - name: dockersock
+          mountPath: /var/run/docker.sock
+      volumes:
+      - name: dockersock
+        hostPath:
+          path: /var/run/docker.sock
+  volumeClaimTemplates:
+  - metadata: 
+      name: bacheca-bigMarket-ledger
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      storageClassName: general
+      resources:
+        requests:
+          storage: 1Gi
+
+---
+# Expose the port 30751 as ClusterIP
+apiVersion: v1
+kind: Service
+metadata:
+  name: bacheca-bigMarket-clusterip
+
+spec:
+  # This defines which pods are going to be represented by this Service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to (eg browser)
+  selector:
+    app: bacheca-bigMarket
+
+  ports:
+    - name: bacheca-bigMarket-clusterip
+      port: 30751
+    - name: bacheca-bigMarket-cc-clusterip
+      port: 30752
+
+  type: ClusterIP
+
+---
+# Expose the port 30751 as node port -  NEEDED if you
+# are interested in connecting to the Pods from the Host
+# machine - keep in mind you would need the IP for the node
+# port service
+apiVersion: v1
+kind: Service
+metadata:
+  name: bacheca-bigMarket-nodeport
+
+spec:
+  # This defines which pods are going to be represented by this Service
+  # The service becomes a network endpoint for either other services
+  # or maybe external users to connect to (eg browser)
+  selector:
+    app: bacheca-bigMarket
+
+  ports:
+    - name: bacheca-bigMarket-nodeport-751
+      port: 30751
+      nodePort: 30751
+    - name: bacheca-bigMarket-cc-nodeport-752
+      port: 30752
+      nodePort: 30752
+
+  type: NodePort
