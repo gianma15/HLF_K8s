@@ -21,7 +21,7 @@ spec:
       - name: bacheca-orderer
 
         # Image used
-        image: gianma15/gianma_repo:orderer:1.0
+        image: gianma15/gianma_repo:orderer
 
         # Uncomment the following during development/testing of the image
         # imagePullPolicy: Always

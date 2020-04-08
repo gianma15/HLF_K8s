@@ -19,7 +19,7 @@ spec:
       containers:
       - name: forn1-tech
         # image used
-        image: gianma15/gianma_repo:techForn1:1.0
+        image: gianma15/gianma_repo:techForn1
         # Uncomment the following during development/testing of the image
         # imagePullPolicy: Always
         env:

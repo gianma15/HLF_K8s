@@ -19,7 +19,7 @@ spec:
       containers:
       - name: bacheca-bigmarket
         # Image used
-        image: gianma15/gianma_repo:bigMarket:1.0
+        image: gianma15/gianma_repo:bigMarket
         # Uncomment the following during development/testing of the image
         # imagePullPolicy: Always
         env:

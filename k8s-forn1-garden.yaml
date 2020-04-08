@@ -19,7 +19,7 @@ spec:
       containers:
       - name: forn1-garden
         # image used
-        image: gianma15/gianma_repo:gardenForn1:1.0
+        image: gianma15/gianma_repo:gardenForn1
         # Uncomment the following during development/testing of the image
         # imagePullPolicy: Always
         env:
