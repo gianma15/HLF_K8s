@@ -2,22 +2,22 @@
 apiVersion: apps/v1
 kind: StatefulSet
 metadata:
-  name: bacheca-bigMarket
+  name: bacheca-bigmarket
   labels:
-    app: bacheca-bigMarket
+    app: bacheca-bigmarket
 spec:
-  serviceName: bacheca-bigMarket
+  serviceName: bacheca-bigmarket
   replicas: 1
   selector:
     matchLabels:
-      app: bacheca-bigMarket
+      app: bacheca-bigmarket
   template:
     metadata:
       labels:
-        app: bacheca-bigMarket
+        app: bacheca-bigmarket
     spec:
       containers:
-      - name: bacheca-bigMarket
+      - name: bacheca-bigmarket
         # Image used
         image: gianma15/gianma_repo:bigMarket:1.0
         # Uncomment the following during development/testing of the image
@@ -32,10 +32,10 @@ spec:
           - name: ORG_CONTEXT
             value: acme
           - name: CORE_PEER_ADDRESS
-          # value: bacheca-bigMarket-clusterip:30751
+          # value: bacheca-bigmarket-clusterip:30751
             value: 0.0.0.0:30751
         volumeMounts:
-        - name: bacheca-bigMarket-ledger
+        - name: bacheca-bigmarket-ledger
           mountPath: /var/ledger
         - name: dockersock
           mountPath: /var/run/docker.sock
@@ -45,7 +45,7 @@ spec:
           path: /var/run/docker.sock
   volumeClaimTemplates:
   - metadata: 
-      name: bacheca-bigMarket-ledger
+      name: bacheca-bigmarket-ledger
     spec:
       accessModes: [ "ReadWriteOnce" ]
       storageClassName: general
@@ -58,19 +58,19 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: bacheca-bigMarket-clusterip
+  name: bacheca-bigmarket-clusterip
 
 spec:
   # This defines which pods are going to be represented by this Service
   # The service becomes a network endpoint for either other services
   # or maybe external users to connect to (eg browser)
   selector:
-    app: bacheca-bigMarket
+    app: bacheca-bigmarket
 
   ports:
-    - name: bacheca-bigMarket-clusterip
+    - name: bacheca-bigmarket-clusterip
       port: 30751
-    - name: bacheca-bigMarket-cc-clusterip
+    - name: bacheca-bigmarket-cc-clusterip
       port: 30752
 
   type: ClusterIP
@@ -83,20 +83,20 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: bacheca-bigMarket-nodeport
+  name: bacheca-bigmarket-nodeport
 
 spec:
   # This defines which pods are going to be represented by this Service
   # The service becomes a network endpoint for either other services
   # or maybe external users to connect to (eg browser)
   selector:
-    app: bacheca-bigMarket
+    app: bacheca-bigmarket
 
   ports:
-    - name: bacheca-bigMarket-nodeport-751
+    - name: bacheca-bigmarket-nodeport-751
       port: 30751
       nodePort: 30751
-    - name: bacheca-bigMarket-cc-nodeport-752
+    - name: bacheca-bigmarket-cc-nodeport-752
       port: 30752
       nodePort: 30752
 
