@@ -1,0 +1,126 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  annotations:
+    kompose.cmd: kompose convert
+    kompose.version: 1.21.0 (992df58d8)
+  creationTimestamp: null
+  labels:
+    io.kompose.service: garden-forn1-bacheca-com
+  name: garden-forn1-bacheca-com
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      io.kompose.service: garden-forn1-bacheca-com
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      annotations:
+        kompose.cmd: kompose convert
+        kompose.version: 1.21.0 (992df58d8)
+      creationTimestamp: null
+      labels:
+        io.kompose.network/kuber_net: "true"
+        io.kompose.service: garden-forn1-bacheca-com
+    spec:
+      containers:
+      - args:
+        - peer
+        - node
+        - start
+        env:
+        - name: CORE_PEER_ADDRESS
+          value: garden.forn1.bacheca.com:9051
+        - name: CORE_PEER_CHAINCODEADDRESS
+          value: garden.forn1.bacheca.com:9052
+        - name: CORE_PEER_CHAINCODELISTENADDRESS
+          value: 0.0.0.0:9052
+        - name: CORE_PEER_GOSSIP_BOOTSTRAP
+          value: garden.forn1.bacheca.com:9051
+        - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
+          value: garden.forn1.bacheca.com:9051
+        - name: CORE_PEER_GOSSIP_ORGLEADER
+          value: "false"
+        - name: CORE_PEER_GOSSIP_USELEADERELECTION
+          value: "true"
+        - name: CORE_PEER_ID
+          value: garden.forn1.bacheca.com
+        - name: CORE_PEER_LISTENADDRESS
+          value: 0.0.0.0:9051
+        - name: CORE_PEER_LOCALMSPID
+          value: Forn1MSP
+        - name: CORE_PEER_PROFILE_ENABLED
+          value: "true"
+        - name: CORE_PEER_TLS_CERT_FILE
+          value: /etc/hyperledger/fabric/tls/server.crt
+        - name: CORE_PEER_TLS_ENABLED
+          value: "true"
+        - name: CORE_PEER_TLS_KEY_FILE
+          value: /etc/hyperledger/fabric/tls/server.key
+        - name: CORE_PEER_TLS_ROOTCERT_FILE
+          value: /etc/hyperledger/fabric/tls/ca.crt
+        - name: CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE
+          value: bacheca_net
+        - name: CORE_VM_ENDPOINT
+          value: unix:///host/var/run/docker.sock
+        - name: FABRIC_LOGGING_SPEC
+          value: DEBUG
+        image: 'hyperledger/fabric-peer:'
+        imagePullPolicy: ""
+        name: garden.forn1.bacheca.com
+        ports:
+        - containerPort: 9051
+        resources: {}
+        volumeMounts:
+        - mountPath: /host/var/run/
+          name: garden-forn1-bacheca-com-claim0
+        - mountPath: /etc/hyperledger/fabric/msp
+          name: garden-forn1-bacheca-com-claim1
+        - mountPath: /etc/hyperledger/fabric/tls
+          name: garden-forn1-bacheca-com-claim2
+        - mountPath: /var/hyperledger/production
+          name: garden.forn1.bacheca.com
+        - mountPath: /opt/gopath/src/github.com/hyperledger/fabric/peer/scripts
+          name: garden-forn1-bacheca-com-claim4
+        - mountPath: /opt/gopath/src/github.com/hyperledger/fabric/peer/chaincode
+          name: garden-forn1-bacheca-com-claim5
+        - mountPath: /var/hyperledger/config
+          name: garden-forn1-bacheca-com-claim6
+        - mountPath: /var/hyperledger/bin
+          name: garden-forn1-bacheca-com-claim7
+        - mountPath: /var/hyperledger/config
+          name: garden-forn1-bacheca-com-claim8
+        workingDir: /opt/gopath/src/github.com/hyperledger/fabric/peer
+      restartPolicy: Always
+      serviceAccountName: ""
+      volumes:
+      - name: garden-forn1-bacheca-com-claim0
+        persistentVolumeClaim:
+          claimName: garden-forn1-bacheca-com-claim0
+      - name: garden-forn1-bacheca-com-claim1
+        persistentVolumeClaim:
+          claimName: garden-forn1-bacheca-com-claim1
+      - name: garden-forn1-bacheca-com-claim2
+        persistentVolumeClaim:
+          claimName: garden-forn1-bacheca-com-claim2
+      - name: garden.forn1.bacheca.com
+        persistentVolumeClaim:
+          claimName: garden.forn1.bacheca.com
+      - name: garden-forn1-bacheca-com-claim4
+        persistentVolumeClaim:
+          claimName: garden-forn1-bacheca-com-claim4
+      - name: garden-forn1-bacheca-com-claim5
+        persistentVolumeClaim:
+          claimName: garden-forn1-bacheca-com-claim5
+      - name: garden-forn1-bacheca-com-claim6
+        persistentVolumeClaim:
+          claimName: garden-forn1-bacheca-com-claim6
+      - name: garden-forn1-bacheca-com-claim7
+        persistentVolumeClaim:
+          claimName: garden-forn1-bacheca-com-claim7
+      - name: garden-forn1-bacheca-com-claim8
+        persistentVolumeClaim:
+          claimName: garden-forn1-bacheca-com-claim8
+status: {}
