@@ -53,3 +53,19 @@ spec:
           name: fabricfiles
         ports:
         - containerPort: 7050
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orderer-bacheca-com
+  labels:
+    run: orderer-bacheca-com
+spec:
+  type: ClusterIP
+  selector:
+    name: orderer-bacheca-com
+  ports:
+  - name: grpc
+    port: 7050
+    protocol: TCP
