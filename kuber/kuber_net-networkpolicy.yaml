@@ -2,13 +2,13 @@ apiVersion: extensions/v1beta1
 kind: NetworkPolicy
 metadata:
   creationTimestamp: null
-  name: kuber_net
+  name: kuber-net
 spec:
   ingress:
   - from:
     - podSelector:
         matchLabels:
-          io.kompose.network/kuber_net: "true"
+          io.kompose.network/kuber-net: "true"
   podSelector:
     matchLabels:
-      io.kompose.network/kuber_net: "true"
+      io.kompose.network/kuber-net: "true"

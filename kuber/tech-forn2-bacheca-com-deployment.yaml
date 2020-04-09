@@ -22,7 +22,7 @@ spec:
         kompose.version: 1.21.0 (992df58d8)
       creationTimestamp: null
       labels:
-        io.kompose.network/kuber_net: "true"
+        io.kompose.network/kuber-net: "true"
         io.kompose.service: tech-forn2-bacheca-com
     spec:
       containers:
