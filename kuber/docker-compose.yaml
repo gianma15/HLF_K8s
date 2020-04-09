@@ -137,7 +137,7 @@ services:
         - ../chaincode:/opt/gopath/src/github.com/hyperledger/fabric/peer/chaincode
         - ../config:/var/hyperledger/config
         - ../bin:/var/hyperledger/bin
-        - ../channel-artifacts:/var/hyperledger/config
+        - ../channel-artifacts:/var/hyperledger/channel-artifacts
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start
     ports:
@@ -183,7 +183,7 @@ services:
         - ../chaincode:/opt/gopath/src/github.com/hyperledger/fabric/peer/chaincode
         - ../config:/var/hyperledger/config
         - ../bin:/var/hyperledger/bin
-        - ../channel-artifacts:/var/hyperledger/config
+        - ../channel-artifacts:/var/hyperledger/channel-artifacts
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start
     ports:
@@ -229,7 +229,7 @@ services:
         - ../chaincode:/opt/gopath/src/github.com/hyperledger/fabric/peer/chaincode
         - ../config:/var/hyperledger/config
         - ../bin:/var/hyperledger/bin
-        - ../channel-artifacts:/var/hyperledger/config
+        - ../channel-artifacts:/var/hyperledger/channel-artifacts
     working_dir: /opt/gopath/src/github.com/hyperledger/fabric/peer
     command: peer node start
     ports:

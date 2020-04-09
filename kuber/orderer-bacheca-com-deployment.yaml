@@ -57,7 +57,7 @@ spec:
           value: '[/var/hyperledger/orderer/tls/ca.crt]'
         image: 'hyperledger/fabric-orderer:'
         imagePullPolicy: ""
-        name: orderer.bacheca.com
+        name: orderer-bacheca-com
         ports:
         - containerPort: 7050
         resources: {}
@@ -69,7 +69,7 @@ spec:
         - mountPath: /var/hyperledger/orderer/tls
           name: orderer-bacheca-com-claim2
         - mountPath: /var/hyperledger/production/orderer
-          name: orderer.bacheca.com
+          name: orderer-bacheca-com
         - mountPath: /var/hyperledger/config
           name: orderer-bacheca-com-claim4
         - mountPath: /var/hyperledger/bin
@@ -89,9 +89,9 @@ spec:
       - name: orderer-bacheca-com-claim2
         persistentVolumeClaim:
           claimName: orderer-bacheca-com-claim2
-      - name: orderer.bacheca.com
+      - name: orderer-bacheca-com
         persistentVolumeClaim:
-          claimName: orderer.bacheca.com
+          claimName: orderer-bacheca-com
       - name: orderer-bacheca-com-claim4
         persistentVolumeClaim:
           claimName: orderer-bacheca-com-claim4

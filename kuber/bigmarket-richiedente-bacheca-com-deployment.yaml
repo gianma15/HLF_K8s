@@ -32,21 +32,21 @@ spec:
         - start
         env:
         - name: CORE_PEER_ADDRESS
-          value: bigmarket.richiedente.bacheca.com:7051
+          value: bigmarket-richiedente-bacheca-com:7051
         - name: CORE_PEER_CHAINCODEADDRESS
-          value: bigmarket.richiedente.bacheca.com:7052
+          value: bigmarket-richiedente-bacheca-com:7052
         - name: CORE_PEER_CHAINCODELISTENADDRESS
           value: 0.0.0.0:7052
         - name: CORE_PEER_GOSSIP_BOOTSTRAP
-          value: bigmarket.richiedente.bacheca.com:7051
+          value: bigmarket-richiedente-bacheca-com:7051
         - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
-          value: bigmarket.richiedente.bacheca.com:7051
+          value: bigmarket-richiedente-bacheca-com:7051
         - name: CORE_PEER_GOSSIP_ORGLEADER
           value: "false"
         - name: CORE_PEER_GOSSIP_USELEADERELECTION
           value: "true"
         - name: CORE_PEER_ID
-          value: bigmarket.richiedente.bacheca.com
+          value: bigmarket-richiedente-bacheca-com
         - name: CORE_PEER_LISTENADDRESS
           value: 0.0.0.0:7051
         - name: CORE_PEER_LOCALMSPID
@@ -69,7 +69,7 @@ spec:
           value: DEBUG
         image: 'hyperledger/fabric-peer:'
         imagePullPolicy: ""
-        name: bigmarket.richiedente.bacheca.com
+        name: bigmarket-richiedente-bacheca-com
         ports:
         - containerPort: 7051
         resources: {}
@@ -81,7 +81,7 @@ spec:
         - mountPath: /etc/hyperledger/fabric/tls
           name: bigmarket-richiedente-bacheca-com-claim2
         - mountPath: /var/hyperledger/production
-          name: bigmarket.richiedente.bacheca.com
+          name: bigmarket-richiedente-bacheca-com
         - mountPath: /opt/gopath/src/github.com/hyperledger/fabric/peer/scripts
           name: bigmarket-richiedente-bacheca-com-claim4
         - mountPath: /opt/gopath/src/github.com/hyperledger/fabric/peer/chaincode
@@ -105,9 +105,9 @@ spec:
       - name: bigmarket-richiedente-bacheca-com-claim2
         persistentVolumeClaim:
           claimName: bigmarket-richiedente-bacheca-com-claim2
-      - name: bigmarket.richiedente.bacheca.com
+      - name: bigmarket-richiedente-bacheca-com
         persistentVolumeClaim:
-          claimName: bigmarket.richiedente.bacheca.com
+          claimName: bigmarket-richiedente-bacheca-com
       - name: bigmarket-richiedente-bacheca-com-claim4
         persistentVolumeClaim:
           claimName: bigmarket-richiedente-bacheca-com-claim4

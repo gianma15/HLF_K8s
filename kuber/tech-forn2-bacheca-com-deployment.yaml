@@ -90,7 +90,7 @@ spec:
           name: tech-forn2-bacheca-com-claim6
         - mountPath: /var/hyperledger/bin
           name: tech-forn2-bacheca-com-claim7
-        - mountPath: /var/hyperledger/config
+        - mountPath: /var/hyperledger/channel-artifacts
           name: tech-forn2-bacheca-com-claim8
         workingDir: /opt/gopath/src/github.com/hyperledger/fabric/peer
       restartPolicy: Always

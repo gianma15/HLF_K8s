@@ -90,7 +90,7 @@ spec:
           name: garden-forn1-bacheca-com-claim6
         - mountPath: /var/hyperledger/bin
           name: garden-forn1-bacheca-com-claim7
-        - mountPath: /var/hyperledger/config
+        - mountPath: /var/hyperledger/channel-artifacts
           name: garden-forn1-bacheca-com-claim8
         workingDir: /opt/gopath/src/github.com/hyperledger/fabric/peer
       restartPolicy: Always
