@@ -26,8 +26,8 @@ spec:
         io.kompose.service: orderer-bacheca-com
     spec:
       containers:
-      - args:
-        - orderer
+#      - args:
+#      - orderer
         env:
         - name: ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE
           value: /var/hyperledger/orderer/tls/server.crt

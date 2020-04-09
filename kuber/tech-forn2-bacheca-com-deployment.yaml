@@ -26,10 +26,10 @@ spec:
         io.kompose.service: tech-forn2-bacheca-com
     spec:
       containers:
-      - args:
-        - peer
-        - node
-        - start
+#      - args:
+ #       - peer
+ #       - node
+#        - start
         env:
         - name: CORE_PEER_ADDRESS
           value: tech-forn2-bacheca-com:10051

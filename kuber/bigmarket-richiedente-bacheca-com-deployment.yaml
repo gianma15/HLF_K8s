@@ -26,10 +26,10 @@ spec:
         io.kompose.service: bigmarket-richiedente-bacheca-com
     spec:
       containers:
-      - args:
-        - peer
-        - node
-        - start
+#      - args:
+ #       - peer
+ #       - node
+#        - start
         env:
         - name: CORE_PEER_ADDRESS
           value: bigmarket-richiedente-bacheca-com:7051

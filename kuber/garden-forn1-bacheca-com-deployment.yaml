@@ -26,10 +26,10 @@ spec:
         io.kompose.service: garden-forn1-bacheca-com
     spec:
       containers:
-      - args:
-        - peer
-        - node
-        - start
+#      - args:
+ #       - peer
+ #       - node
+#        - start
         env:
         - name: CORE_PEER_ADDRESS
           value: garden-forn1-bacheca-com:9051
