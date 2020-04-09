@@ -28,12 +28,12 @@ spec:
           - name: FABRIC_LOGGING_SPEC
             value: DEBUG
           - name: ORDERER_ADDRESS
-            value: bacheca-orderer-clusterip:30750
+            value: bacheca-orderer-clusterip:7050
           - name: ORG_CONTEXT
             value: richiedente
           - name: CORE_PEER_ADDRESS
-          # value: bacheca-bigmarket-clusterip:30751
-            value: 0.0.0.0:30751
+          # value: bacheca-bigmarket-clusterip:7051
+            value: 0.0.0.0:7051
         volumeMounts:
         - name: bacheca-bigmarket-ledger
           mountPath: /var/ledger
@@ -54,7 +54,7 @@ spec:
           storage: 1Gi
 
 ---
-# Expose the port 30751 as ClusterIP
+# Expose the port 7051 as ClusterIP
 apiVersion: v1
 kind: Service
 metadata:
@@ -69,14 +69,14 @@ spec:
 
   ports:
     - name: bacheca-bigmarket-clusterip
-      port: 30751
+      port: 7051
     - name: bacheca-bigmarket-cc-clusterip
-      port: 30752
+      port: 7052
 
   type: ClusterIP
 
 ---
-# Expose the port 30751 as node port -  NEEDED if you
+# Expose the port 7051 as node port -  NEEDED if you
 # are interested in connecting to the Pods from the Host
 # machine - keep in mind you would need the IP for the node
 # port service
@@ -94,10 +94,10 @@ spec:
 
   ports:
     - name: bacheca-bigmarket-nodeport-751
-      port: 30751
-      nodePort: 30751
+      port: 7051
+      nodePort: 7051
     - name: bacheca-bigmarket-cc-nodeport-752
-      port: 30752
-      nodePort: 30752
+      port: 7052
+      nodePort: 7052
 
   type: NodePort
