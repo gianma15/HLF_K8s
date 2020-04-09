@@ -18,7 +18,7 @@ spec:
           claimName: fabric-pvc
 
       containers:
-      - name: orderer.bacheca.com
+      - name: orderer-bacheca-com
         image: "hyperledger/fabric-orderer:2.0.0"
         command: ["sh", "-c", "orderer"]
         env:
