@@ -23,3 +23,13 @@ spec:
           name: fabricfiles
         - mountPath: /host/var/run/docker.sock
           name: dockersocket
+
+volumeClaimTemplates:
+- metadata: 
+    name: fabricfiles
+    spec:
+    accessModes: [ "ReadWriteOnce" ]
+    storageClassName: general
+    resources:
+        requests:
+        storage: 1Gi
