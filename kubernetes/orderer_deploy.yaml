@@ -3,11 +3,14 @@ kind: Deployment
 metadata:
   name: orderer-bacheca-com
 spec:
-  replicas: 3
+  replicas: 1
+  selector:
+    matchLabels:
+      name: orderer-bacheca-com
   template:
     metadata:
       labels:
-        name: orderer
+        name: orderer-bacheca-com
     spec:
       volumes:
       - name: fabricfiles
