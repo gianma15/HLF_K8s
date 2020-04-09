@@ -55,7 +55,7 @@ spec:
           value: /var/hyperledger/orderer/tls/server.key
         - name: ORDERER_GENERAL_TLS_ROOTCAS
           value: '[/var/hyperledger/orderer/tls/ca.crt]'
-        image: 'hyperledger/fabric-orderer:'
+        image: 'hyperledger/fabric-orderer:latest'
         imagePullPolicy: ""
         name: orderer-bacheca-com
         ports:
