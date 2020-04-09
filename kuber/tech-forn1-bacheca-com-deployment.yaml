@@ -32,21 +32,21 @@ spec:
         - start
         env:
         - name: CORE_PEER_ADDRESS
-          value: tech.forn1.bacheca.com:8051
+          value: tech-forn1-bacheca-com:8051
         - name: CORE_PEER_CHAINCODEADDRESS
-          value: tech.forn1.bacheca.com:8052
+          value: tech-forn1-bacheca-com:8052
         - name: CORE_PEER_CHAINCODELISTENADDRESS
           value: 0.0.0.0:8052
         - name: CORE_PEER_GOSSIP_BOOTSTRAP
-          value: tech.forn1.bacheca.com:8051
+          value: tech-forn1-bacheca-com:8051
         - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
-          value: tech.forn1.bacheca.com:8051
+          value: tech-forn1-bacheca-com:8051
         - name: CORE_PEER_GOSSIP_ORGLEADER
           value: "false"
         - name: CORE_PEER_GOSSIP_USELEADERELECTION
           value: "true"
         - name: CORE_PEER_ID
-          value: tech.forn1.bacheca.com
+          value: tech-forn1-bacheca-com
         - name: CORE_PEER_LISTENADDRESS
           value: 0.0.0.0:8051
         - name: CORE_PEER_LOCALMSPID
@@ -69,7 +69,7 @@ spec:
           value: DEBUG
         image: 'hyperledger/fabric-peer:'
         imagePullPolicy: ""
-        name: tech.forn1.bacheca.com
+        name: tech-forn1-bacheca-com
         ports:
         - containerPort: 8051
         resources: {}
@@ -81,7 +81,7 @@ spec:
         - mountPath: /etc/hyperledger/fabric/tls
           name: tech-forn1-bacheca-com-claim2
         - mountPath: /var/hyperledger/production
-          name: tech.forn1.bacheca.com
+          name: tech-forn1-bacheca-com
         - mountPath: /opt/gopath/src/github.com/hyperledger/fabric/peer/scripts
           name: tech-forn1-bacheca-com-claim4
         - mountPath: /opt/gopath/src/github.com/hyperledger/fabric/peer/chaincode
@@ -105,9 +105,9 @@ spec:
       - name: tech-forn1-bacheca-com-claim2
         persistentVolumeClaim:
           claimName: tech-forn1-bacheca-com-claim2
-      - name: tech.forn1.bacheca.com
+      - name: tech-forn1-bacheca-com
         persistentVolumeClaim:
-          claimName: tech.forn1.bacheca.com
+          claimName: tech-forn1-bacheca-com
       - name: tech-forn1-bacheca-com-claim4
         persistentVolumeClaim:
           claimName: tech-forn1-bacheca-com-claim4

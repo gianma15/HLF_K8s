@@ -32,21 +32,21 @@ spec:
         - start
         env:
         - name: CORE_PEER_ADDRESS
-          value: garden.forn1.bacheca.com:9051
+          value: garden-forn1-bacheca-com:9051
         - name: CORE_PEER_CHAINCODEADDRESS
-          value: garden.forn1.bacheca.com:9052
+          value: garden-forn1-bacheca-com:9052
         - name: CORE_PEER_CHAINCODELISTENADDRESS
           value: 0.0.0.0:9052
         - name: CORE_PEER_GOSSIP_BOOTSTRAP
-          value: garden.forn1.bacheca.com:9051
+          value: garden-forn1-bacheca-com:9051
         - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
-          value: garden.forn1.bacheca.com:9051
+          value: garden-forn1-bacheca-com:9051
         - name: CORE_PEER_GOSSIP_ORGLEADER
           value: "false"
         - name: CORE_PEER_GOSSIP_USELEADERELECTION
           value: "true"
         - name: CORE_PEER_ID
-          value: garden.forn1.bacheca.com
+          value: garden-forn1-bacheca-com
         - name: CORE_PEER_LISTENADDRESS
           value: 0.0.0.0:9051
         - name: CORE_PEER_LOCALMSPID
@@ -69,7 +69,7 @@ spec:
           value: DEBUG
         image: 'hyperledger/fabric-peer:'
         imagePullPolicy: ""
-        name: garden.forn1.bacheca.com
+        name: garden-forn1-bacheca-com
         ports:
         - containerPort: 9051
         resources: {}
@@ -81,7 +81,7 @@ spec:
         - mountPath: /etc/hyperledger/fabric/tls
           name: garden-forn1-bacheca-com-claim2
         - mountPath: /var/hyperledger/production
-          name: garden.forn1.bacheca.com
+          name: garden-forn1-bacheca-com
         - mountPath: /opt/gopath/src/github.com/hyperledger/fabric/peer/scripts
           name: garden-forn1-bacheca-com-claim4
         - mountPath: /opt/gopath/src/github.com/hyperledger/fabric/peer/chaincode
@@ -105,9 +105,9 @@ spec:
       - name: garden-forn1-bacheca-com-claim2
         persistentVolumeClaim:
           claimName: garden-forn1-bacheca-com-claim2
-      - name: garden.forn1.bacheca.com
+      - name: garden-forn1-bacheca-com
         persistentVolumeClaim:
-          claimName: garden.forn1.bacheca.com
+          claimName: garden-forn1-bacheca-com
       - name: garden-forn1-bacheca-com-claim4
         persistentVolumeClaim:
           claimName: garden-forn1-bacheca-com-claim4
