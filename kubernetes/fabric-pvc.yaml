@@ -5,9 +5,8 @@ metadata:
 spec:
   accessModes:
     - ReadWriteOnce
+  volumeMode: Filesystem
   resources:
     requests:
       storage: 10Gi
-  selector:
-    matchLabels:
-      name: fabricfiles
+  storageClassName: slow
