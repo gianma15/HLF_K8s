@@ -69,10 +69,10 @@ spec:
         workingDir: /fabric
         ports:
         - containerPort: 7051
-      - name: couchdb
-        image: hyperledger/fabric-couchdb:latest
-        env:
-        - name: COUCHDB_USER
-          value: "hyperledgeruser"
-        - name: COUCHDB_PASSWORD
-          value: "hyperledgerpass"
+      # - name: couchdb
+      #   image: hyperledger/fabric-couchdb:latest
+      #   env:
+      #   - name: COUCHDB_USER
+      #     value: "hyperledgeruser"
+      #   - name: COUCHDB_PASSWORD
+      #     value: "hyperledgerpass"
