@@ -28,12 +28,12 @@ spec:
           - name: FABRIC_LOGGING_SPEC
             value: DEBUG
           - name: ORDERER_ADDRESS
-            value: bacheca-orderer-clusterip:7050
+            value: bacheca-orderer-clusterip:30750
           - name: ORG_CONTEXT
             value: forn1
           - name: CORE_PEER_ADDRESS
-          # value: forn1-tech-clusterip:8051
-            value: 0.0.0.0:8051
+          # value: forn1-tech-clusterip:30851
+            value: 0.0.0.0:30851
         volumeMounts:
         - name: forn1-tech-ledger
           mountPath: /var/ledger
@@ -56,7 +56,7 @@ spec:
 
 
 ---
-# Expose the port 8051 as ClusterIP
+# Expose the port 30851 as ClusterIP
 apiVersion: v1
 kind: Service
 metadata:
@@ -71,14 +71,14 @@ spec:
 
   ports:
     - name: forn1-tech-clusterip
-      port: 8051
+      port: 30851
     # - name: forn1-tech-cc-clusterip
-    #   port: 8052
+    #   port: 30852
 
   type: ClusterIP
 
 ---
-# Expose the port 8051 as node port -  NEEDED if you
+# Expose the port 30851 as node port -  NEEDED if you
 # are interested in connecting to the Pods from the Host
 # machine - keep in mind you would need the IP for the node
 # port service
@@ -96,10 +96,10 @@ spec:
 
   ports:
     - name: forn1-tech-nodeport-851
-      port: 8051
-      nodePort: 8051
+      port: 30851
+      nodePort: 30851
     - name: forn1-tech-cc-nodeport-852
-      port: 8052
-      nodePort: 8052
+      port: 30852
+      nodePort: 30852
 
   type: NodePort

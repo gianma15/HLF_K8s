@@ -63,12 +63,12 @@ spec:
 
   ports:
     - name: bacheca-orderer-clusterip
-      port: 7050
+      port: 30750
 
   type: ClusterIP
 
 ---
-# Expose the port 7050 as node port - NEEDED if you
+# Expose the port 30750 as node port - NEEDED if you
 # are interested in connecting to the Pods from the Host
 # machine - keep in mind you would need the IP for the node
 # port service
@@ -86,7 +86,7 @@ spec:
 
   ports:
     - name: bacheca-orderer-nodeport
-      port: 7050
-      nodePort: 7050
+      port: 30750
+      nodePort: 30750
 
   type: NodePort
