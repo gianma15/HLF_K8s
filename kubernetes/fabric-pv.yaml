@@ -3,6 +3,7 @@ apiVersion: v1
 metadata:
   name: fabric-pv
   labels:
+    type: local
     name: fabricfiles
 spec:
   capacity:
@@ -10,6 +11,7 @@ spec:
   volumeMode: Filesystem
   accessModes:
     - ReadWriteMany
+  storageClass: local-storage
   persistentVolumeReclaimPolicy: Retain
   nfs:
     path: /nfs/fabric
