@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: fabric-tools
+  name: fabric-tools-tf1
 spec:
   volumes:
   - name: fabricfiles

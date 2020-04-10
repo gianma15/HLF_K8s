@@ -1,12 +1,12 @@
 apiVersion: v1
 kind: Pod
 metadata:
-  name: fabric-tools-bm
+  name: fabric-tools-tf2
 spec:
   volumes:
   - name: fabricfiles
     persistentVolumeClaim:
-      claimName: fabric-pvc-bm
+      claimName: fabric-pvc-tf2
       
   - name: dockersocket
     hostPath:
