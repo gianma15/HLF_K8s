@@ -1,0 +1,94 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: garden-forn1-bacheca-com
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: garden-forn1-bacheca-com
+  template:
+    metadata:
+      labels:
+        name: garden-forn1-bacheca-com
+    spec:
+      volumes:
+      - name: fabricfiles
+        persistentVolumeClaim:
+          claimName: fabric-pvc-gf1
+      - name: dockersocket
+        hostPath:
+          path: /var/run/docker.sock
+
+      containers:
+      - name: garden-forn1-bacheca-com
+        image: 'hyperledger/fabric-peer:2.0.0'
+        command: ["sh","-c","peer node start"]
+        env:
+        - name: CORE_PEER_ADDRESS
+          value: garden-forn1-bacheca-com:9051
+        - name: CORE_PEER_CHAINCODEADDRESS
+          value: garden-forn1-bacheca-com:9052
+        - name: CORE_PEER_CHAINCODELISTENADDRESS
+          value: 0.0.0.0:9052
+        - name: CORE_PEER_GOSSIP_BOOTSTRAP
+          value: garden-forn1-bacheca-com:9051
+        - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
+          value: garden-forn1-bacheca-com:9051
+        - name: CORE_PEER_GOSSIP_ORGLEADER
+          value: "false"
+        - name: CORE_PEER_GOSSIP_USELEADERELECTION
+          value: "true"
+        - name: CORE_PEER_ID
+          value: garden-forn1-bacheca-com
+        - name: CORE_PEER_LISTENADDRESS
+          value: 0.0.0.0:9051
+        - name: CORE_PEER_LOCALMSPID
+          value: forn1MSP
+        - name: CORE_PEER_PROFILE_ENABLED
+          value: "true"
+        - name: CORE_PEER_TLS_CERT_FILE
+          value: /fabric/organizations/peerOrganizations/forn1.bacheca.com/peers/garden.forn1.bacheca.com/tls/server.crt
+        - name: CORE_PEER_TLS_ENABLED
+          value: "true"
+        - name: CORE_PEER_TLS_KEY_FILE
+          value: /fabric/organizations/peerOrganizations/forn1.bacheca.com/peers/garden.forn1.bacheca.com/tls/server.key
+        - name: CORE_PEER_TLS_ROOTCERT_FILE
+          value: /fabric/organizations/peerOrganizations/forn1.bacheca.com/peers/garden.forn1.bacheca.com/tls/ca.crt
+        - name: CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE
+          value: bacheca_net
+        - name: CORE_VM_ENDPOINT
+          value: unix:///host/var/run/docker.sock
+        - name: FABRIC_LOGGING_SPEC
+          value: DEBUG
+        volumeMounts:
+        - mountPath: /fabric
+          name: fabricfiles
+        - mountPath: /host/var/run/docker.sock
+          name: dockersocket
+        workingDir: /fabric
+        ports:
+        - containerPort: 9051
+      - name: couchdb
+        image: hyperledger/fabric-couchdb:latest
+        env:
+        - name: COUCHDB_USER
+          value: "hyperledgeruser"
+        - name: COUCHDB_PASSWORD
+          value: "hyperledgerpass"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: garden-forn1-bacheca-com
+  labels:
+    run: garden-forn1-bacheca-com
+spec:
+  type: ClusterIP
+  selector:
+    name: garden-forn1-bacheca-com
+  ports:
+  - name: grpc
+    port: 9051
+    protocol: TCP
