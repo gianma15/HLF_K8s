@@ -9,7 +9,7 @@ spec:
     storage: 3Gi
   volumeMode: Filesystem
   accessModes:
-    - ReadWriteOnce
+    - ReadOnlyMany
   persistentVolumeReclaimPolicy: Retain
   nfs:
     path: /nfs/fabric
