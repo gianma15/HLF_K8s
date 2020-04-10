@@ -16,11 +16,9 @@ PeerOrgs:
     EnableNodeOUs: true
     Specs:
       - Hostname: tech
-        SANS:
-          - localhost
+
       - Hostname: garden
-        SANS:
-          - localhost
+
     # ---------------------------------------------------------------------------
     # "Specs"
     # ---------------------------------------------------------------------------

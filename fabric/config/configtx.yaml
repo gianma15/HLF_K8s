@@ -25,7 +25,7 @@ Organizations:
         ID: OrdererMSP
 
         # MSPDir is the filesystem path which contains the MSP configuration
-        MSPDir: ../organizations/ordererOrganizations/bacheca.com/msp
+        MSPDir: /fabric/organizations/ordererOrganizations/bacheca.com/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -52,7 +52,7 @@ Organizations:
         # ID to load the MSP definition as
         ID: RichiedenteMSP
 
-        MSPDir: ../organizations/peerOrganizations/richiedente.bacheca.com/msp
+        MSPDir: /fabric/organizations/peerOrganizations/richiedente.bacheca.com/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -87,7 +87,7 @@ Organizations:
         # ID to load the MSP definition as
         ID: Forn1MSP
 
-        MSPDir: ../organizations/peerOrganizations/forn1.bacheca.com/msp
+        MSPDir: /fabric/organizations/peerOrganizations/forn1.bacheca.com/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -123,7 +123,7 @@ Organizations:
         # ID to load the MSP definition as
         ID: Forn2MSP
 
-        MSPDir: ../organizations/peerOrganizations/forn2.bacheca.com/msp
+        MSPDir: /fabric/organizations/peerOrganizations/forn2.bacheca.com/msp
 
         # Policies defines the set of policies at this level of the config tree
         # For organization policies, their canonical path is usually
@@ -258,8 +258,8 @@ Orderer: &OrdererDefaults
         Consenters:
         - Host: orderer.bacheca.com
           Port: 7050
-          ClientTLSCert: ../organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/tls/server.crt
-          ServerTLSCert: ../organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/tls/server.crt
+          ClientTLSCert: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/tls/server.crt
+          ServerTLSCert: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/tls/server.crt
 
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s

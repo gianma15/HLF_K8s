@@ -7,17 +7,17 @@
 # This is a collection of bash functions used by different scripts
 
 export CORE_PEER_TLS_ENABLED=true
-export ORDERER_CA=${PWD}/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/msp/tlscacerts/tlsca.bacheca.com-cert.pem
-export BIGMARKET_RICHIEDENTE_CA=${PWD}/organizations/peerOrganizations/richiedente.bacheca.com/peers/bigMarket.richiedente.bacheca.com/tls/ca.crt
-export TECH_FORN1_CA=${PWD}/organizations/peerOrganizations/forn1.bacheca.com/peers/tech.forn1.bacheca.com/tls/ca.crt
-export GARDEN1_FORN1_CA=${PWD}/organizations/peerOrganizations/forn1.bacheca.com/peers/garden.forn1.bacheca.com/tls/ca.crt
-export TECH_FORN2_CA=${PWD}/organizations/peerOrganizations/forn2.bacheca.com/peers/tech.forn2.bacheca.com/tls/ca.crt
+export ORDERER_CA=/fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/msp/tlscacerts/tlsca.bacheca.com-cert.pem
+export BIGMARKET_RICHIEDENTE_CA=/fabric/organizations/peerOrganizations/richiedente.bacheca.com/peers/bigMarket.richiedente.bacheca.com/tls/ca.crt
+export TECH_FORN1_CA=/fabric/organizations/peerOrganizations/forn1.bacheca.com/peers/tech.forn1.bacheca.com/tls/ca.crt
+export GARDEN1_FORN1_CA=/fabric/organizations/peerOrganizations/forn1.bacheca.com/peers/garden.forn1.bacheca.com/tls/ca.crt
+export TECH_FORN2_CA=/fabric/organizations/peerOrganizations/forn2.bacheca.com/peers/tech.forn2.bacheca.com/tls/ca.crt
 
 # Set OrdererOrg.Admin globals
 setOrdererGlobals() {
   export CORE_PEER_LOCALMSPID="OrdererMSP"
-  export CORE_PEER_TLS_ROOTCERT_FILE=${PWD}/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/msp/tlscacerts/tlsca.bacheca.com-cert.pem
-  export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/ordererOrganizations/bacheca.com/users/Admin@bacheca.com/msp
+  export CORE_PEER_TLS_ROOTCERT_FILE=/fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/msp/tlscacerts/tlsca.bacheca.com-cert.pem
+  export CORE_PEER_MSPCONFIGPATH=/fabric/organizations/ordererOrganizations/bacheca.com/users/Admin@bacheca.com/msp
 }
 
 # Set environment variables for the peer org
@@ -32,17 +32,17 @@ setGlobals() {
   if [ $USING_ORG -eq 1 ]; then
     export CORE_PEER_LOCALMSPID="RichiedenteMSP"
     export CORE_PEER_TLS_ROOTCERT_FILE=$BIGMARKET_RICHIEDENTE_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/richiedente.bacheca.com/users/Admin@richiedente.bacheca.com/msp
+    export CORE_PEER_MSPCONFIGPATH=/fabric/organizations/peerOrganizations/richiedente.bacheca.com/users/Admin@richiedente.bacheca.com/msp
     export CORE_PEER_ADDRESS=localhost:7051
   elif [ $USING_ORG -eq 2 ]; then
     export CORE_PEER_LOCALMSPID="Forn1MSP"
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_forn1_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/forn1.bacheca.com/users/Admin@forn1.bacheca.com/msp
+    export CORE_PEER_MSPCONFIGPATH=/fabric/organizations/peerOrganizations/forn1.bacheca.com/users/Admin@forn1.bacheca.com/msp
     export CORE_PEER_ADDRESS=localhost:9051
   elif [ $USING_ORG -eq 3 ]; then
     export CORE_PEER_LOCALMSPID="Forn2MSP"
     export CORE_PEER_TLS_ROOTCERT_FILE=$PEER0_forn2_CA
-    export CORE_PEER_MSPCONFIGPATH=${PWD}/organizations/peerOrganizations/forn2.bacheca.com/users/Admin@forn2.bacheca.com/msp
+    export CORE_PEER_MSPCONFIGPATH=/fabric/organizations/peerOrganizations/forn2.bacheca.com/users/Admin@forn2.bacheca.com/msp
     export CORE_PEER_ADDRESS=localhost:11051
   else
     echo "================== ERROR !!! ORG Unknown =================="

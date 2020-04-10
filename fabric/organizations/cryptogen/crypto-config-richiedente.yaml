@@ -15,8 +15,7 @@ PeerOrgs:
     EnableNodeOUs: true
     Specs:
       - Hostname: bigMarket
-        SANS:
-          - localhost
+
     # ---------------------------------------------------------------------------
     # "Specs"
     # ---------------------------------------------------------------------------
@@ -52,8 +51,6 @@ PeerOrgs:
     # ---------------------------------------------------------------------------
     Template:
       Count: 0
-      SANS:
-        - localhost
       # Start: 5
       # Hostname: {{.Prefix}}{{.Index}} # default
       
