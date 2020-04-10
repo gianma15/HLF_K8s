@@ -90,5 +90,11 @@ spec:
     name: garden-forn1-bacheca-com
   ports:
   - name: grpc
+    port: 9050
+    protocol: TCP
+  - name: events
     port: 9051
+    protocol: TCP
+  - name: couchdb
+    port: 5984
     protocol: TCP

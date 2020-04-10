@@ -90,5 +90,11 @@ spec:
     name: tech-forn1-bacheca-com
   ports:
   - name: grpc
+    port: 8050
+    protocol: TCP
+  - name: events
     port: 8051
+    protocol: TCP
+  - name: couchdb
+    port: 5984
     protocol: TCP
