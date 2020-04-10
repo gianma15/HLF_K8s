@@ -8,7 +8,7 @@ spec:
   capacity:
     storage: 20Gi
   volumeMode: Filesystem
-  storageClass: general
+  storageClassName: general
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain
