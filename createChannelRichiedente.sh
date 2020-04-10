@@ -31,7 +31,7 @@ function createTechChannel(){
 
 function createGardenChannel(){
   set -x
-  peer channel create -o localhost:7050 -c gardenchannel --ordererTLSHostnameOverride orderer.bacheca.com -f /fabric/channel-artifacts/GardenChannel.tx --outputBlock /fabric/channel-artifacts/gardenchannel.block --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA >&log.txt
+  peer channel create -o $ORDERER_URL -c gardenchannel --ordererTLSHostnameOverride orderer.bacheca.com -f /fabric/channel-artifacts/GardenChannel.tx --outputBlock /fabric/channel-artifacts/gardenchannel.block --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA >&log.txt
   res=$?
   set +x
 
@@ -74,7 +74,7 @@ function joinTechChannel(){
 	verifyResult $res "After $MAX_RETRY attempts, BigMarket Tech has failed to join channel 'TechChannel' "
 
   set -x
-    peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.bacheca.com -c techchannel -f /fabric/channel-artifacts/TechRichiedenteAnchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA >&log.txt
+    peer channel update -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com -c techchannel -f /fabric/channel-artifacts/TechRichiedenteAnchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA >&log.txt
     res=$?
     set +x
   cat log.txt
@@ -102,7 +102,7 @@ function joinGardenChannel(){
 	verifyResult $res "After $MAX_RETRY attempts, BigMarket Tech has failed to join channel 'gardenchannel' "
 
   set -x
-    peer channel update -o localhost:7050 --ordererTLSHostnameOverride orderer.bacheca.com -c gardenchannel -f /fabric/channel-artifacts/GardenRichiedenteAnchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA >&log.txt
+    peer channel update -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com -c gardenchannel -f /fabric/channel-artifacts/GardenRichiedenteAnchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA >&log.txt
     res=$?
     set +x
   cat log.txt
