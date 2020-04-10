@@ -1,5 +1,5 @@
 apiVersion: apps/v1
-kind: StatefulSet
+kind: Deployment
 metadata:
   name: orderer-bacheca-com
 spec:
@@ -15,7 +15,7 @@ spec:
       volumes:
       - name: fabricfiles
         persistentVolumeClaim:
-          claimName: orderer-ledger
+          claimName: fabric-pvc
 
       containers:
       - name: orderer-bacheca-com
@@ -54,15 +54,6 @@ spec:
         ports:
         - containerPort: 7050
 
-  volumeClaimTemplates:
-  - metadata: 
-      name: orderer-ledger
-    spec:
-      accessModes: [ "ReadOnlyMany" ]
-      storageClassName: general
-      resources:
-        requests:
-          storage: 1Gi
 
 ---
 apiVersion: v1

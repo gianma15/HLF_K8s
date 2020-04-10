@@ -6,8 +6,9 @@ metadata:
     name: fabricfiles
 spec:
   capacity:
-    storage: 3Gi
+    storage: 20Gi
   volumeMode: Filesystem
+  storageClass: general
   accessModes:
     - ReadWriteOnce
   persistentVolumeReclaimPolicy: Retain

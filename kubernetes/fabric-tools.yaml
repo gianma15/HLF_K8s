@@ -7,6 +7,7 @@ spec:
   - name: fabricfiles
     persistentVolumeClaim:
       claimName: fabric-pvc
+      
   - name: dockersocket
     hostPath:
       path: /var/run/docker.sock
