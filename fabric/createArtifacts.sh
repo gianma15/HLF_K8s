@@ -1,4 +1,4 @@
-export PATH=/fabric/./fabric/bin:/fabric:$PATH
+#export PATH=/fabric/./fabric/bin:/fabric:$PATH
 export FABRIC_CFG_PATH=/fabric/config
 #export VERBOSE=false
 # use this as the default docker-compose yaml definition
@@ -22,7 +22,6 @@ export ORDERER_CA=/fabric/organizations/ordererOrganizations/bacheca.com/orderer
 export TECH_FORN1_CA=/fabric/organizations/peerOrganizations/forn1.bacheca.com/peers/tech.forn1.bacheca.com/tls/ca.crt
 export GARDEN1_FORN1_CA=/fabric/organizations/peerOrganizations/forn1.bacheca.com/peers/garden.forn1.bacheca.com/tls/ca.crt
 export TECH_FORN2_CA=/fabric/organizations/peerOrganizations/forn2.bacheca.com/peers/tech.forn2.bacheca.com/tls/ca.crt
-
 
 function createOrgs(){
     #if [ -d "organizations/peerOrganizations" || -d "organizations/ordererOrganizations"]; then
