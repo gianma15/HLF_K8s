@@ -12,7 +12,7 @@ PeerOrgs:
   # Org1
   # ---------------------------------------------------------------------------
   - Name: Forn2
-    Domain: forn2.bacheca.com
+    Domain: forn2-bacheca-com
     EnableNodeOUs: true
     Specs:
       - Hostname: tech

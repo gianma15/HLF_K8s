@@ -11,10 +11,10 @@ PeerOrgs:
   # Org2
   # ---------------------------------------------------------------------------
   - Name: Richiedente
-    Domain: richiedente.bacheca.com
+    Domain: richiedente-bacheca-com
     EnableNodeOUs: true
     Specs:
-      - Hostname: bigMarket
+      - Hostname: bigmarket
 
     # ---------------------------------------------------------------------------
     # "Specs"
