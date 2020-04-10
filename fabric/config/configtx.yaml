@@ -76,7 +76,7 @@ Organizations:
             # AnchorPeers defines the location of peers which can be used
             # for cross org gossip communication.  Note, this value is only
             # encoded in the genesis block in the Application section context
-            - Host: bigMarket.richiedente.bacheca.com
+            - Host: bigMarket-richiedente-bacheca-com
               Port: 7051
 
     - &Forn1
@@ -110,9 +110,9 @@ Organizations:
             # AnchorPeers defines the location of peers which can be used
             # for cross org gossip communication.  Note, this value is only
             # encoded in the genesis block in the Application section context
-            - Host: tech.forn1.bacheca.com
+            - Host: tech-forn1-bacheca-com
               Port: 8051
-            - Host: garden.forn1.bacheca.com
+            - Host: garden-forn1-bacheca-com
               Port: 9051
 
     - &Forn2
@@ -146,7 +146,7 @@ Organizations:
             # AnchorPeers defines the location of peers which can be used
             # for cross org gossip communication.  Note, this value is only
             # encoded in the genesis block in the Application section context
-            - Host: tech.forn2.bacheca.com
+            - Host: tech-forn1-bacheca-com
               Port: 10051
 
 ################################################################################
