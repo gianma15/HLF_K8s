@@ -7,6 +7,7 @@ export TECH_FORN1_CA=/fabric/organizations/peerOrganizations/forn1.bacheca.com/p
 export GARDEN_FORN1_CA=/fabric/organizations/peerOrganizations/forn1.bacheca.com/peers/garden.forn1.bacheca.com/tls/ca.crt
 export TECH_FORN2_CA=/fabric/organizations/peerOrganizations/forn2.bacheca.com/peers/tech.forn2.bacheca.com/tls/ca.crt
 
+export ORDERER_URL=orderer-bacheca-com:7050
 export CORE_PEER_LOCALMSPID="RichiedenteMSP"
 export CORE_PEER_TLS_ROOTCERT_FILE=$BIGMARKET_RICHIEDENTE_CA
 export CORE_PEER_MSPCONFIGPATH=/fabric/organizations/peerOrganizations/richiedente.bacheca.com/users/Admin@richiedente.bacheca.com/msp
@@ -17,7 +18,7 @@ DELAY=3
 
 function createTechChannel(){
   set -x
-  peer channel create -o localhost:7050 -c techchannel --ordererTLSHostnameOverride orderer.bacheca.com -f /fabric/channel-artifacts/TechChannel.tx --outputBlock /fabric/channel-artifacts/techchannel.block --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA >&log.txt
+  peer channel create -o $ORDERER_URL -c techchannel --ordererTLSHostnameOverride orderer.bacheca.com -f /fabric/channel-artifacts/TechChannel.tx --outputBlock /fabric/channel-artifacts/techchannel.block --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA >&log.txt
   res=$?
   set +x
 
