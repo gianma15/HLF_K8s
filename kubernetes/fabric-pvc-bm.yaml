@@ -1,12 +1,12 @@
 kind: PersistentVolumeClaim
 apiVersion: v1
 metadata:
-  name: fabric-pvc
+  name: fabric-pvc-bm
 spec:
   accessModes:
     - ReadWriteOnce
   volumeMode: Filesystem
   resources:
     requests:
-      storage: 3Gi
+      storage: 1Gi
   storageClassName: general
