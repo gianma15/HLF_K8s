@@ -69,10 +69,26 @@ spec:
         workingDir: /fabric
         ports:
         - containerPort: 7051
-      # - name: couchdb
-      #   image: hyperledger/fabric-couchdb:latest
-      #   env:
-      #   - name: COUCHDB_USER
-      #     value: "hyperledgeruser"
-      #   - name: COUCHDB_PASSWORD
-      #     value: "hyperledgerpass"
+      - name: couchdb
+        image: hyperledger/fabric-couchdb:latest
+        env:
+        - name: COUCHDB_USER
+          value: "hyperledgeruser"
+        - name: COUCHDB_PASSWORD
+          value: "hyperledgerpass"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bigmarket-richiedente-bacheca-com
+  labels:
+    run: bigmarket-richiedente-bacheca-com
+spec:
+  type: ClusterIP
+  selector:
+    name: bigmarket-richiedente-bacheca-com
+  ports:
+  - name: grpc
+    port: 7051
+    protocol: TCP
