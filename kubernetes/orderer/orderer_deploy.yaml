@@ -15,7 +15,7 @@ spec:
       volumes:
       - name: fabricfiles
         persistentVolumeClaim:
-          claimName: fabric-pvc
+          claimName: fabric-pvc-or
 
       containers:
       - name: orderer-bacheca-com
