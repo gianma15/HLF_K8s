@@ -1,7 +1,7 @@
 kind: PersistentVolume
 apiVersion: v1
 metadata:
-  name: fabric-pv
+  name: fabric-pv-or
   labels:
     name: fabricfiles
 spec:
