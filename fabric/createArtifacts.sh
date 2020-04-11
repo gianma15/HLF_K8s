@@ -18,10 +18,10 @@ DATABASE="couchdb"
 DELAY="3"
 export CORE_PEER_TLS_ENABLED=true
 export ORDERER_URL=orderer-bacheca-com:7050
-export ORDERER_CA=/fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/msp/tlscacerts/tlsca.bacheca.com-cert.pem
-export TECH_FORN1_CA=/fabric/organizations/peerOrganizations/forn1.bacheca.com/peers/tech.forn1.bacheca.com/tls/ca.crt
-export GARDEN1_FORN1_CA=/fabric/organizations/peerOrganizations/forn1.bacheca.com/peers/garden.forn1.bacheca.com/tls/ca.crt
-export TECH_FORN2_CA=/fabric/organizations/peerOrganizations/forn2.bacheca.com/peers/tech.forn2.bacheca.com/tls/ca.crt
+export ORDERER_CA=/fabric/organizations/ordererOrganizations/bacheca-com/orderers/orderer-bacheca-com/msp/tlscacerts/tlsca-bacheca-com-cert.pem
+export TECH_FORN1_CA=/fabric/organizations/peerOrganizations/forn1-bacheca-com/peers/tech.forn1-bacheca-com/tls/ca.crt
+export GARDEN1_FORN1_CA=/fabric/organizations/peerOrganizations/forn1-bacheca-com/peers/garden.forn1-bacheca-com/tls/ca.crt
+export TECH_FORN2_CA=/fabric/organizations/peerOrganizations/forn2-bacheca-com/peers/tech.forn2-bacheca-com/tls/ca.crt
 
 function createOrgs(){
     #if [ -d "organizations/peerOrganizations" || -d "organizations/ordererOrganizations"]; then
@@ -277,39 +277,39 @@ function packageInstall(){
 function approve(){
   echo  "--------------------------------------------------APPROVE RICHIEDENTE-------------------------------------------------------"
   source /fabric/scripts/envRichiedente.sh
-  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID techchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configT.json --package-id $CC_PACKAGE_ID_O --sequence 1 --tls true --cafile $ORDERER_CA
-  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID gardenchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configG.json --package-id $CC_PACKAGE_ID_O --sequence 1 --tls true --cafile $ORDERER_CA
+  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID techchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configT.json --package-id $CC_PACKAGE_ID_O --sequence 1 --tls true --cafile $ORDERER_CA
+  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID gardenchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configG.json --package-id $CC_PACKAGE_ID_O --sequence 1 --tls true --cafile $ORDERER_CA
 
-  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID techchannel --name richiesta --version 1.0 --init-required --package-id $CC_PACKAGE_ID_R --sequence 1 --tls true --cafile $ORDERER_CA
-  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID gardenchannel --name richiesta --version 1.0 --init-required  --package-id $CC_PACKAGE_ID_R --sequence 1 --tls true --cafile $ORDERER_CA
+  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID techchannel --name richiesta --version 1.0 --init-required --package-id $CC_PACKAGE_ID_R --sequence 1 --tls true --cafile $ORDERER_CA
+  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID gardenchannel --name richiesta --version 1.0 --init-required  --package-id $CC_PACKAGE_ID_R --sequence 1 --tls true --cafile $ORDERER_CA
 
   echo  "--------------------------------------------------APPROVE TECH1-------------------------------------------------------"
   source /fabric/scripts/envTechForn1.sh
-  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID techchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configT.json --package-id $CC_PACKAGE_ID_O --sequence 1 --tls true --cafile $ORDERER_CA
-  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID techchannel --name richiesta --version 1.0 --init-required --package-id $CC_PACKAGE_ID_R --sequence 1 --tls true --cafile $ORDERER_CA
+  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID techchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configT.json --package-id $CC_PACKAGE_ID_O --sequence 1 --tls true --cafile $ORDERER_CA
+  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID techchannel --name richiesta --version 1.0 --init-required --package-id $CC_PACKAGE_ID_R --sequence 1 --tls true --cafile $ORDERER_CA
 
   echo  "--------------------------------------------------APPROVE TECH2-------------------------------------------------------"
   source /fabric/scripts/envTechForn2.sh
-  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID techchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configT.json --package-id $CC_PACKAGE_ID_O --sequence 1 --tls true --cafile $ORDERER_CA
-  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID techchannel --name richiesta --version 1.0 --init-required --package-id $CC_PACKAGE_ID_R --sequence 1 --tls true --cafile $ORDERER_CA
+  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID techchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configT.json --package-id $CC_PACKAGE_ID_O --sequence 1 --tls true --cafile $ORDERER_CA
+  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID techchannel --name richiesta --version 1.0 --init-required --package-id $CC_PACKAGE_ID_R --sequence 1 --tls true --cafile $ORDERER_CA
 
   echo  "--------------------------------------------------APPROVE GARDEN1-------------------------------------------------------"
   source /fabric/scripts/envGardenForn1.sh
-  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID gardenchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configG.json --package-id $CC_PACKAGE_ID_O --sequence 1 --tls true --cafile $ORDERER_CA
-  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID gardenchannel --name richiesta --version 1.0 --init-required --package-id $CC_PACKAGE_ID_R --sequence 1 --tls true --cafile $ORDERER_CA
+  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID gardenchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configG.json --package-id $CC_PACKAGE_ID_O --sequence 1 --tls true --cafile $ORDERER_CA
+  peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID gardenchannel --name richiesta --version 1.0 --init-required --package-id $CC_PACKAGE_ID_R --sequence 1 --tls true --cafile $ORDERER_CA
 
 }
 
 function commit(){
   echo  "--------------------------------------------------COMMIT-------------------------------------------------------"
   source /fabric/scripts/envRichiedente.sh
-  peer lifecycle chaincode commit -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID techchannel --name richiesta --version 1.0 --init-required --sequence 1 --tls true --cafile $ORDERER_CA --peerAddresses localhost:7051 --tlsRootCertFiles $BIGMARKET_RICHIEDENTE_CA --peerAddresses localhost:8051 --tlsRootCertFiles $TECH_FORN1_CA --peerAddresses localhost:10051 --tlsRootCertFiles $TECH_FORN2_CA
-  peer chaincode invoke -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com  --tls true --cafile $ORDERER_CA -C techchannel -n richiesta --peerAddresses localhost:7051 --tlsRootCertFiles $BIGMARKET_RICHIEDENTE_CA --peerAddresses localhost:8051 --tlsRootCertFiles $TECH_FORN1_CA --peerAddresses localhost:10051 --tlsRootCertFiles $TECH_FORN2_CA --isInit -c '{"function":"init","Args":[]}'
-  peer lifecycle chaincode commit -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID techchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configT.json --sequence 1 --tls true --cafile $ORDERER_CA --peerAddresses localhost:7051 --tlsRootCertFiles $BIGMARKET_RICHIEDENTE_CA --peerAddresses localhost:8051 --tlsRootCertFiles $TECH_FORN1_CA --peerAddresses localhost:10051 --tlsRootCertFiles $TECH_FORN2_CA
+  peer lifecycle chaincode commit -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID techchannel --name richiesta --version 1.0 --init-required --sequence 1 --tls true --cafile $ORDERER_CA --peerAddresses localhost:7051 --tlsRootCertFiles $BIGMARKET_RICHIEDENTE_CA --peerAddresses localhost:8051 --tlsRootCertFiles $TECH_FORN1_CA --peerAddresses localhost:10051 --tlsRootCertFiles $TECH_FORN2_CA
+  peer chaincode invoke -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com  --tls true --cafile $ORDERER_CA -C techchannel -n richiesta --peerAddresses localhost:7051 --tlsRootCertFiles $BIGMARKET_RICHIEDENTE_CA --peerAddresses localhost:8051 --tlsRootCertFiles $TECH_FORN1_CA --peerAddresses localhost:10051 --tlsRootCertFiles $TECH_FORN2_CA --isInit -c '{"function":"init","Args":[]}'
+  peer lifecycle chaincode commit -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID techchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configT.json --sequence 1 --tls true --cafile $ORDERER_CA --peerAddresses localhost:7051 --tlsRootCertFiles $BIGMARKET_RICHIEDENTE_CA --peerAddresses localhost:8051 --tlsRootCertFiles $TECH_FORN1_CA --peerAddresses localhost:10051 --tlsRootCertFiles $TECH_FORN2_CA
 
-  peer lifecycle chaincode commit -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID gardenchannel --name richiesta --version 1.0 --init-required --sequence 1 --tls true --cafile $ORDERER_CA --peerAddresses localhost:7051 --tlsRootCertFiles $BIGMARKET_RICHIEDENTE_CA --peerAddresses localhost:9051 --tlsRootCertFiles $GARDEN_FORN1_CA
-  peer chaincode invoke -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com  --tls true --cafile $ORDERER_CA -C gardenchannel -n richiesta --peerAddresses localhost:7051 --tlsRootCertFiles $BIGMARKET_RICHIEDENTE_CA --peerAddresses localhost:9051 --tlsRootCertFiles $GARDEN_FORN1_CA --isInit -c '{"function":"init","Args":[]}'
-  peer lifecycle chaincode commit -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID gardenchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configG.json --sequence 1 --tls true --cafile $ORDERER_CA --peerAddresses localhost:7051 --tlsRootCertFiles $BIGMARKET_RICHIEDENTE_CA --peerAddresses localhost:9051 --tlsRootCertFiles $GARDEN_FORN1_CA
+  peer lifecycle chaincode commit -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID gardenchannel --name richiesta --version 1.0 --init-required --sequence 1 --tls true --cafile $ORDERER_CA --peerAddresses localhost:7051 --tlsRootCertFiles $BIGMARKET_RICHIEDENTE_CA --peerAddresses localhost:9051 --tlsRootCertFiles $GARDEN_FORN1_CA
+  peer chaincode invoke -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com  --tls true --cafile $ORDERER_CA -C gardenchannel -n richiesta --peerAddresses localhost:7051 --tlsRootCertFiles $BIGMARKET_RICHIEDENTE_CA --peerAddresses localhost:9051 --tlsRootCertFiles $GARDEN_FORN1_CA --isInit -c '{"function":"init","Args":[]}'
+  peer lifecycle chaincode commit -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID gardenchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configG.json --sequence 1 --tls true --cafile $ORDERER_CA --peerAddresses localhost:7051 --tlsRootCertFiles $BIGMARKET_RICHIEDENTE_CA --peerAddresses localhost:9051 --tlsRootCertFiles $GARDEN_FORN1_CA
 }
 
 function networkUp() {

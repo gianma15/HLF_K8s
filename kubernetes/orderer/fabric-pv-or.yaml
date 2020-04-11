@@ -14,5 +14,5 @@ spec:
   persistentVolumeReclaimPolicy: Retain
   nfs:
     path: /nfs/fabric
-    server: storage.bacheca.com
+    server: storage-bacheca-com
     readOnly: false
