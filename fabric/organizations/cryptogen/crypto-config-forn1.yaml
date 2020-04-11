@@ -16,8 +16,9 @@ PeerOrgs:
     EnableNodeOUs: true
     Specs:
       - Hostname: tech
-
+        CommonName: "tech-forn1-bacheca-com"
       - Hostname: garden
+        CommonName: "garden-forn1-bacheca-com"
 
     # ---------------------------------------------------------------------------
     # "Specs"

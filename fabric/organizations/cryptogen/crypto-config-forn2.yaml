@@ -16,6 +16,7 @@ PeerOrgs:
     EnableNodeOUs: true
     Specs:
       - Hostname: tech
+        CommonName: "tech-forn2-bacheca-com"
 
     # ---------------------------------------------------------------------------
     # "Specs"

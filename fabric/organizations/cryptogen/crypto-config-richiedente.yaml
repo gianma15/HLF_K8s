@@ -15,6 +15,7 @@ PeerOrgs:
     EnableNodeOUs: true
     Specs:
       - Hostname: bigmarket
+        CommonName: "bigmarket-richiedente-bacheca-com"
 
     # ---------------------------------------------------------------------------
     # "Specs"
