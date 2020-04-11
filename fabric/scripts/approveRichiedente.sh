@@ -13,9 +13,5 @@ export CORE_PEER_TLS_ROOTCERT_FILE=$BIGMARKET_RICHIEDENTE_CA
 export CORE_PEER_MSPCONFIGPATH=/fabric/organizations/peerOrganizations/richiedente.bacheca.com/users/Admin@richiedente.bacheca.com/msp
 export CORE_PEER_ADDRESS=bigmarket-richiedente-bacheca-com:7051
 
-
-export CC_PACKAGE_ID_R=richiesta:200b6b42d71d6e24e2029b2477ee1dacf38402e7fc9185c4d1fa858d29b144ad
-export CC_PACKAGE_ID_O=offerta:444f2e109f37d2d9b3f8da7cd5bd43b6a5ad20939cd6c1e95eca9096e5d08751
-
 peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID techchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configT.json --package-id $CC_PACKAGE_ID_O --sequence 1 --tls true --cafile $ORDERER_CA
 peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID gardenchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configG.json --package-id $CC_PACKAGE_ID_O --sequence 1 --tls true --cafile $ORDERER_CA
