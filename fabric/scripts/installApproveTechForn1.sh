@@ -19,5 +19,5 @@ peer lifecycle chaincode queryinstalled
 export CC_PACKAGE_ID_R=$1
 export CC_PACKAGE_ID_O=$2
 
-peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID techchannel --name richiesta --version 1.0 --init-required --package-id $CC_PACKAGE_ID_R --sequence 1 --tls true --cafile $ORDERER_CA
-peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com --channelID techchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configT.json --package-id $CC_PACKAGE_ID_O --sequence 1 --tls true --cafile $ORDERER_CA
+peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID techchannel --name richiesta --version 1.0 --init-required --package-id $CC_PACKAGE_ID_R --sequence 1 --tls true --cafile $ORDERER_CA
+peer lifecycle chaincode approveformyorg -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com --channelID techchannel --name offerta --version 1.0 --collections-config /fabric/chaincode/bacheca/offerta/collections_configT.json --package-id $CC_PACKAGE_ID_O --sequence 1 --tls true --cafile $ORDERER_CA

@@ -40,7 +40,7 @@ function joinChannel() {
 	verifyResult $res "After $MAX_RETRY attempts, Forn1 Tech has failed to join channel 'TechChannel' "
 
   set -x
-    peer channel update -o $ORDERER_URL --ordererTLSHostnameOverride orderer.bacheca.com -c techchannel -f ./channel-artifacts/TechForn1Anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA >&log.txt
+    peer channel update -o $ORDERER_URL --ordererTLSHostnameOverride orderer-bacheca-com -c techchannel -f ./channel-artifacts/TechForn1Anchors.tx --tls $CORE_PEER_TLS_ENABLED --cafile $ORDERER_CA >&log.txt
     res=$?
     set +x
   cat log.txt
