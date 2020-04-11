@@ -21,7 +21,7 @@ spec:
           path: /var/run/docker.sock
 
       containers:
-      - name: bigmarket-richiedente-bacheca-com
+      - name: bigmarket-richiedente-bacheca-commme
         image: 'hyperledger/fabric-peer:2.0.0'
         command: ["sh","-c","peer node start"]
         env:
