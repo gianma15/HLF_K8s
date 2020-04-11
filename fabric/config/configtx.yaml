@@ -42,7 +42,7 @@ Organizations:
                 Rule: "OR('OrdererMSP.admin')"
 
         OrdererEndpoints:
-            - orderer.bacheca.com:7050
+            - orderer-bacheca-com:7050
 
     - &Richiedente
         # DefaultOrg defines the organization which is used in the sampleconfig
