@@ -16,12 +16,13 @@ export CORE_PEER_ADDRESS=bigmarket-richiedente-bacheca-com:7051
 echo  "--------------------------------------------------PACKAGE INSTALL-------------------------------------------------------"
 peer lifecycle chaincode package offerta.tar.gz --path /fabric/chaincode/bacheca/offerta --lang node --label offerta 
 peer lifecycle chaincode install offerta.tar.gz
-export CC_PACKAGE_ID_O=$( peer lifecycle chaincode queryinstalled | grep -Go "offerta:\w*")
+#export CC_PACKAGE_ID_O=$( peer lifecycle chaincode queryinstalled | grep -Go "offerta:\w*")
 peer lifecycle chaincode package richiesta.tar.gz --path /fabric/chaincode/bacheca/richiesta --lang node --label richiesta 
 peer lifecycle chaincode install richiesta.tar.gz
-export CC_PACKAGE_ID_R=$( peer lifecycle chaincode queryinstalled | grep -Go "richiesta:\w*")
+#export CC_PACKAGE_ID_R=$( peer lifecycle chaincode queryinstalled | grep -Go "richiesta:\w*")
 echo "||||||||||                          ||||||||||"
 echo "|||||||||| PACKAGE ID dei Chaincode ||||||||||"
 echo "vvvvvvvvvv                          vvvvvvvvvv"
-echo $CC_PACKAGE_ID_O
-echo $CC_PACKAGE_ID_R
+peer lifecycle chaincode queryinstalled
+#echo $CC_PACKAGE_ID_O
+#echo $CC_PACKAGE_ID_R
