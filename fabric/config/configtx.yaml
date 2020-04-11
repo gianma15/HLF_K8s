@@ -258,8 +258,8 @@ Orderer: &OrdererDefaults
         Consenters:
         - Host: orderer-bacheca-com
           Port: 7050
-          ClientTLSCert: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/tls/server.crt
-          ServerTLSCert: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/tls/server.crt
+          ClientTLSCert: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/tls/server.crt
+          ServerTLSCert: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/tls/server.crt
 
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s
