@@ -48,13 +48,13 @@ spec:
         - name: CORE_PEER_PROFILE_ENABLED
           value: "true"
         - name: CORE_PEER_TLS_CERT_FILE
-          value: /fabric/organizations/peerOrganizations/richiedente.bacheca.com/peers/bigmarket.richiedente.bacheca.com/tls/server.crt
+          value: /fabric/organizations/peerOrganizations/richiedente.bacheca.com/peers/bigmarket-richiedente-bacheca-com/tls/server.crt
         - name: CORE_PEER_TLS_ENABLED
           value: "true"
         - name: CORE_PEER_TLS_KEY_FILE
-          value: /fabric/organizations/peerOrganizations/richiedente.bacheca.com/peers/bigmarket.richiedente.bacheca.com/tls/server.key
+          value: /fabric/organizations/peerOrganizations/richiedente.bacheca.com/peers/bigmarket-richiedente-bacheca-com/tls/server.key
         - name: CORE_PEER_TLS_ROOTCERT_FILE
-          value: /fabric/organizations/peerOrganizations/richiedente.bacheca.com/peers/bigmarket.richiedente.bacheca.com/tls/ca.crt
+          value: /fabric/organizations/peerOrganizations/richiedente.bacheca.com/peers/bigmarket-richiedente-bacheca-com/tls/ca.crt
         - name: CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE
           value: bacheca_net
         - name: CORE_VM_ENDPOINT
