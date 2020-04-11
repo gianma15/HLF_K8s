@@ -301,7 +301,8 @@ Orderer: &OrdererDefaults
         BlockValidation:
             Type: ImplicitMeta
             Rule: "ANY Writers"
-
+    Addresses:
+        - orderer-bacheca-com:7050
 ################################################################################
 #
 #   CHANNEL

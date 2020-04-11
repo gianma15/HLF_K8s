@@ -18,4 +18,5 @@ OrdererOrgs:
     # ---------------------------------------------------------------------------
     Specs:
       - Hostname: orderer
+        CommonName: "orderer-bacheca-com"
 
