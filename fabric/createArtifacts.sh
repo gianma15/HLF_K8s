@@ -19,9 +19,9 @@ DELAY="3"
 export CORE_PEER_TLS_ENABLED=true
 export ORDERER_URL=orderer-bacheca-com:7050
 export ORDERER_CA=/fabric/organizations/ordererOrganizations/bacheca-com/orderers/orderer-bacheca-com/msp/tlscacerts/tlsca-bacheca-com-cert.pem
-export TECH_FORN1_CA=/fabric/organizations/peerOrganizations/forn1-bacheca-com/peers/tech.forn1-bacheca-com/tls/ca.crt
-export GARDEN1_FORN1_CA=/fabric/organizations/peerOrganizations/forn1-bacheca-com/peers/garden.forn1-bacheca-com/tls/ca.crt
-export TECH_FORN2_CA=/fabric/organizations/peerOrganizations/forn2-bacheca-com/peers/tech.forn2-bacheca-com/tls/ca.crt
+export TECH_FORN1_CA=/fabric/organizations/peerOrganizations/forn1-bacheca-com/peers/tech-forn1-bacheca-com/tls/ca.crt
+export GARDEN1_FORN1_CA=/fabric/organizations/peerOrganizations/forn1-bacheca-com/peers/garden-forn1-bacheca-com/tls/ca.crt
+export TECH_FORN2_CA=/fabric/organizations/peerOrganizations/forn2-bacheca-com/peers/tech-forn2-bacheca-com/tls/ca.crt
 
 function createOrgs(){
     #if [ -d "organizations/peerOrganizations" || -d "organizations/ordererOrganizations"]; then
