@@ -23,11 +23,11 @@ spec:
         command: ["sh", "-c", "orderer"]
         env:
         - name: ORDERER_GENERAL_CLUSTER_CLIENTCERTIFICATE
-          value: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/tls/server.crt
+          value: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/tls/server.crt
         - name: ORDERER_GENERAL_CLUSTER_CLIENTPRIVATEKEY
-          value: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/tls/server.key
+          value: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/tls/server.key
         - name: ORDERER_GENERAL_CLUSTER_ROOTCAS
-          value: "[/fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/tls/ca.crt]"
+          value: "[/fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/tls/ca.crt]"
         - name: ORDERER_GENERAL_GENESISFILE
           value: /fabric/system-genesis-block/genesis.block
         - name: ORDERER_GENERAL_GENESISMETHOD
@@ -37,17 +37,17 @@ spec:
         - name: ORDERER_GENERAL_LISTENPORT
           value: "7050"
         - name: ORDERER_GENERAL_LOCALMSPDIR
-          value: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/msp
+          value: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/msp
         - name: ORDERER_GENERAL_LOCALMSPID
           value: OrdererMSP
         - name: ORDERER_GENERAL_TLS_CERTIFICATE
-          value: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/tls/server.crt
+          value: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/tls/server.crt
         - name: ORDERER_GENERAL_TLS_ENABLED
           value: "true"
         - name: ORDERER_GENERAL_TLS_PRIVATEKEY
-          value: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/tls/server.key
+          value: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/tls/server.key
         - name: ORDERER_GENERAL_TLS_ROOTCAS
-          value: "[/fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/tls/ca.crt]"
+          value: "[/fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer.bacheca.com/tls/ca.crt]"
         volumeMounts:
         - mountPath: /fabric
           name: fabricfiles
