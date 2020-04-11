@@ -11,7 +11,7 @@ PeerOrgs:
   # Org2
   # ---------------------------------------------------------------------------
   - Name: Richiedente
-    Domain: richiedente-bacheca-com
+    Domain: richiedente.bacheca.com
     EnableNodeOUs: true
     Specs:
       - Hostname: bigmarket
@@ -33,8 +33,8 @@ PeerOrgs:
     #                 Org.Domain, respectively.
     # ---------------------------------------------------------------------------
     # Specs:
-    #   - Hostname: foo # implicitly "foo.org1-bacheca-com"
-    #     CommonName: foo27.org5-bacheca-com # overrides Hostname-based FQDN set above
+    #   - Hostname: foo # implicitly "foo.org1.bacheca.com"
+    #     CommonName: foo27.org5.bacheca.com # overrides Hostname-based FQDN set above
     #   - Hostname: bar
     #   - Hostname: baz
     # ---------------------------------------------------------------------------

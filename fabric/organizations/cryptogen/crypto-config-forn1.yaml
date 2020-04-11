@@ -12,7 +12,7 @@ PeerOrgs:
   # Org1
   # ---------------------------------------------------------------------------
   - Name: Forn1
-    Domain: forn1-bacheca-com
+    Domain: forn1.bacheca.com
     EnableNodeOUs: true
     Specs:
       - Hostname: tech
@@ -35,8 +35,8 @@ PeerOrgs:
     #                 which obtains its values from the Spec.Hostname and
     #                 Org.Domain, respectively.
     # ---------------------------------------------------------------------------
-    #   - Hostname: foo # implicitly "foo.org1-bacheca-com"
-    #     CommonName: foo27.org5-bacheca-com # overrides Hostname-based FQDN set above
+    #   - Hostname: foo # implicitly "foo.org1.bacheca.com"
+    #     CommonName: foo27.org5.bacheca.com # overrides Hostname-based FQDN set above
     #   - Hostname: bar
     #   - Hostname: baz
     # ---------------------------------------------------------------------------
