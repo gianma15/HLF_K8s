@@ -55,6 +55,8 @@ spec:
           value: /fabric/organizations/peerOrganizations/richiedente.bacheca.com/peers/bigmarket-richiedente-bacheca-com/tls/server.key
         - name: CORE_PEER_TLS_ROOTCERT_FILE
           value: /fabric/organizations/peerOrganizations/richiedente.bacheca.com/peers/bigmarket-richiedente-bacheca-com/tls/ca.crt
+        - name: CORE_PEER_MSPCONFIGPATH
+          value: /fabric/organizations/peerOrganizations/richiedente.bacheca.com/peers/bigmarket-richiedente-bacheca-com/msp/
         - name: CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE
           value: bacheca_net
         - name: CORE_VM_ENDPOINT
