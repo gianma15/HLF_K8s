@@ -55,6 +55,8 @@ spec:
           value: /fabric/organizations/peerOrganizations/forn1.bacheca.com/peers/tech-forn1-bacheca-com/tls/server.key
         - name: CORE_PEER_TLS_ROOTCERT_FILE
           value: /fabric/organizations/peerOrganizations/forn1.bacheca.com/peers/tech-forn1-bacheca-com/tls/ca.crt
+        - name: CORE_PEER_MSPCONFIGPATH
+          value: /fabric/organizations/peerOrganizations/forn1.bacheca.com/peers/tech-forn1-bacheca-com/msp/
         - name: CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE
           value: bacheca_net
         - name: CORE_VM_ENDPOINT
