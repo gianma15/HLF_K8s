@@ -44,7 +44,7 @@ spec:
         - name: CORE_PEER_LISTENADDRESS
           value: 0.0.0.0:10051
         - name: CORE_PEER_LOCALMSPID
-          value: forn2MSP
+          value: Forn2MSP
         - name: CORE_PEER_PROFILE_ENABLED
           value: "true"
         - name: CORE_PEER_TLS_CERT_FILE
