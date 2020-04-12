@@ -30,6 +30,10 @@ spec:
           value: "[/fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/tls/ca.crt]"
         - name: ORDERER_GENERAL_GENESISFILE
           value: /fabric/system-genesis-block/genesis.block
+        - name: ORDERER_GENERAL_BOOTSTRAPMETHOD
+          value: file
+        - name: ORDERER_GENERAL_BOOTSTRAPFILE
+          value: /fabric/system-genesis-block/genesis.block
         - name: ORDERER_GENERAL_GENESISMETHOD
           value: file
         - name: ORDERER_GENERAL_LISTENADDRESS
