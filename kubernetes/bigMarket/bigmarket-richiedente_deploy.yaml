@@ -71,6 +71,22 @@ spec:
           value: "hyperledgeruser"
         - name: CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
           value: "hyperledgerpass"
+        - name: CORE_LOGGING_LEVEL
+          value: debug
+        - name: CORE_LOGGING_PEER
+          value: debug
+        - name: CORE_LOGGING_CAUTHDSL
+          value: debug
+        - name: CORE_LOGGING_GOSSIP
+          value: debug
+        - name: CORE_LOGGING_LEDGER
+          value: debug
+        - name: CORE_LOGGING_MSP
+          value: info
+        - name: CORE_LOGGING_POLICIES
+          value: debug
+        - name: CORE_LOGGING_GRPC
+          value: debug
         volumeMounts:
         - mountPath: /fabric
           name: fabricfiles

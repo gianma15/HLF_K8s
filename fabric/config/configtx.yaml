@@ -63,13 +63,13 @@ Organizations:
                 Rule: "OR('RichiedenteMSP.admin', 'RichiedenteMSP.peer', 'RichiedenteMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('RichiedenteMSP.admin', 'RichiedenteMSP.client', 'RichiedenteMSP.orderer')"
+                Rule: "OR('RichiedenteMSP.admin', 'RichiedenteMSP.client')"
             Admins:
                 Type: Signature
                 Rule: "OR('RichiedenteMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('RichiedenteMSP.peer', 'RichiedenteMSP.orderer')"
+                Rule: "OR('RichiedenteMSP.peer')"
 
         # leave this flag set to true.
         AnchorPeers:
@@ -260,18 +260,20 @@ Orderer: &OrdererDefaults
           Port: 7050
           ClientTLSCert: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/tls/server.crt
           ServerTLSCert: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/tls/server.crt
-        # - Host: bigmarket-richiedente-bacheca-com
+        # - Host: orderer1-bacheca-com
         #   Port: 7050
-        #   ClientTLSCert: /fabric/organizations/peerOrganizations/richiedente.bacheca.com/peers/bigmarket-richiedente-bacheca-com/tls/server.crt
-        #   ServerTLSCert: /fabric/organizations/peerOrganizations/richiedente.bacheca.com/peers/bigmarket-richiedente-bacheca-com/tls/server.crt
-        # - Host: tech-forn1-bacheca-com
-        #   Port: 8050
-        #   ClientTLSCert: /fabric/organizations/peerOrganizations/forn1.bacheca.com/peers/tech-forn1-bacheca-com/tls/server.crt
-        #   ServerTLSCert: /fabric/organizations/peerOrganizations/forn1.bacheca.com/peers/tech-forn1-bacheca-com/tls/server.crt
-        # - Host: tech-forn2-bacheca-com
-        #   Port: 10050
-        #   ClientTLSCert: /fabric/organizations/peerOrganizations/forn2.bacheca.com/peers/tech-forn2-bacheca-com/tls/server.crt
-        #   ServerTLSCert: /fabric/organizations/peerOrganizations/forn2.bacheca.com/peers/tech-forn2-bacheca-com/tls/server.crt
+        #   ClientTLSCert: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer1-bacheca-com/tls/server.crt
+        #   ServerTLSCert: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer1-bacheca-com/tls/server.crt
+        # - Host: orderer2-bacheca-com
+        #   Port: 7050
+        #   ClientTLSCert: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer2-bacheca-com/tls/server.crt
+        #   ServerTLSCert: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer2-bacheca-com/tls/server.crt
+        # - Host: orderer3-bacheca-com
+        #   Port: 7050
+        #   ClientTLSCert: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer3-bacheca-com/tls/server.crt
+        #   ServerTLSCert: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer3-bacheca-com/tls/server.crt
+        
+        
         
     # Batch Timeout: The amount of time to wait before creating a batch
     BatchTimeout: 2s
