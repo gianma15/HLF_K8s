@@ -52,6 +52,20 @@ spec:
           value: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/tls/server.key
         - name: ORDERER_GENERAL_TLS_ROOTCAS
           value: "[/fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/tls/ca.crt]"
+        - name: ORDERER_CFG_PATH
+          value: /fabric/
+        - name: ORDERER_GENERAL_LEDGERTYPE
+          value: file
+        - name: ORDERER_FILELEDGER_LOCATION
+          value: /fabric/ledger/orderer
+        - name: ORDERER_GENERAL_BATCHTIMEOUT
+          value: 1s
+        - name: ORDERER_GENERAL_BATCHSIZE_MAXMESSAGECOUNT
+          value: "10"
+        - name: ORDERER_GENERAL_MAXWINDOWSIZE
+          value: "1000"
+        - name: CONFIGTX_GENERAL_ORDERERTYPE
+          value: etcdraft
         volumeMounts:
         - mountPath: /fabric
           name: fabricfiles
