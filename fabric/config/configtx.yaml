@@ -63,13 +63,13 @@ Organizations:
                 Rule: "OR('RichiedenteMSP.admin', 'RichiedenteMSP.peer', 'RichiedenteMSP.client')"
             Writers:
                 Type: Signature
-                Rule: "OR('RichiedenteMSP.admin', 'RichiedenteMSP.client')"
+                Rule: "OR('RichiedenteMSP.admin', 'RichiedenteMSP.client', 'RichiedenteMSP.orderer')"
             Admins:
                 Type: Signature
                 Rule: "OR('RichiedenteMSP.admin')"
             Endorsement:
                 Type: Signature
-                Rule: "OR('RichiedenteMSP.peer')"
+                Rule: "OR('RichiedenteMSP.peer', 'RichiedenteMSP.orderer')"
 
         # leave this flag set to true.
         AnchorPeers:

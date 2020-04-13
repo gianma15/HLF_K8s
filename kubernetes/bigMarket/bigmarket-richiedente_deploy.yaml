@@ -36,9 +36,9 @@ spec:
         - name: CORE_PEER_GOSSIP_EXTERNALENDPOINT
           value: bigmarket-richiedente-bacheca-com:7051
         - name: CORE_PEER_GOSSIP_ORGLEADER
-          value: "true"
-        - name: CORE_PEER_GOSSIP_USELEADERELECTION
           value: "false"
+        - name: CORE_PEER_GOSSIP_USELEADERELECTION
+          value: "true"
         - name: CORE_PEER_ID
           value: bigmarket.richiedente.bacheca.com
         - name: CORE_PEER_LISTENADDRESS
