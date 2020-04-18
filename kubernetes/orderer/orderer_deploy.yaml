@@ -28,6 +28,8 @@ spec:
           value: /fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/tls/server.key
         - name: ORDERER_GENERAL_CLUSTER_ROOTCAS
           value: "[/fabric/organizations/ordererOrganizations/bacheca.com/orderers/orderer-bacheca-com/tls/ca.crt]"
+        - name: ORDERER_GENERAL_CLUSTER_LISTENPORT
+          value: "7050"
         - name: ORDERER_GENERAL_GENESISFILE
           value: /fabric/system-genesis-block/genesis.block
         - name: ORDERER_GENERAL_BOOTSTRAPMETHOD

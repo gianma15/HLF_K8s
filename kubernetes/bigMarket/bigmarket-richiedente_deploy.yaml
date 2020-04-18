@@ -71,22 +71,6 @@ spec:
           value: "hyperledgeruser"
         - name: CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD
           value: "hyperledgerpass"
-        - name: CORE_LOGGING_LEVEL
-          value: debug
-        - name: CORE_LOGGING_PEER
-          value: debug
-        - name: CORE_LOGGING_CAUTHDSL
-          value: debug
-        - name: CORE_LOGGING_GOSSIP
-          value: debug
-        - name: CORE_LOGGING_LEDGER
-          value: debug
-        - name: CORE_LOGGING_MSP
-          value: info
-        - name: CORE_LOGGING_POLICIES
-          value: debug
-        - name: CORE_LOGGING_GRPC
-          value: debug
         volumeMounts:
         - mountPath: /fabric
           name: fabricfiles
@@ -123,4 +107,21 @@ spec:
     protocol: TCP
   - name: couchdb
     port: 5984
+    protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: bigmarket-richiedente-bacheca-com-ssh
+  labels:
+    run: bigmarket-richiedente-bacheca-com
+spec:
+  type: LoadBalancer
+  selector:
+    name: bigmarket-richiedente-bacheca-com
+  ports:
+  - port: 22
+    targetPort: 22
+    name: ssh
     protocol: TCP
