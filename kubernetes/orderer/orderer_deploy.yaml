@@ -88,3 +88,6 @@ spec:
   - name: grpc
     port: 7050
     protocol: TCP
+  - name: endor
+    port: 7051
+    protocol: TCP
