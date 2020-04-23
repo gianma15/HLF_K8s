@@ -52,7 +52,6 @@ class Offerta extends Contract {
             await ctx.stub.putPrivateData("collectionOfferteForn2", OffertaID, Buffer.from(JSON.stringify(Offerta)));
         }
         console.info('============= END : accettaOfferta ===========');
-        this.rifiutaAllOthers(ctx, OffertaID, Offerta.RichiestaID, fornitore);
     }
 
     async rifiutaOfferta(ctx, OffertaID, fornitore) {
@@ -77,32 +76,32 @@ class Offerta extends Contract {
         console.info('============= END : rifiutaOfferta ===========');
     }
 
-    async rifiutaAllOthers(ctx, OffertaID, RichiestaID, fornitore) {
-        console.info('============= START : rifiutaAllOthers ===========');
-        // const startKey = 'Offerta0';
-        // const endKey = 'Offerta999';
-        if (fornitore == "Forn1") {
-            var range = ctx.stub.getPrivateDataByRange("collectionOfferteForn1", startKey, endKey);
-            //var range = ctx.stub.getPrivateDataByRange("collectionOfferteForn1",'','');
-        } else if (fornitore == "Forn2") {
-            var range = ctx.stub.getPrivateDataByRange("collectionOfferteForn2", startKey, endKey);
-            //var range = ctx.stub.getPrivateDataByRange("collectionOfferteForn2",'','');
-        }
-        for await (const { key, value } of range) {
-            const strValue = Buffer.from(value).toString('utf8');
-            let record;
-            try {
-                record = JSON.parse(strValue);
-            } catch (err) {
-                console.log(err);
-                record = strValue;
-            }
-            if (record.OffertaID != OffertaID && record.RichiestaID == RichiestaID) {
-                this.rifiutaOfferta(ctx, OffertaID, fornitore);
-            }
-        }
-        console.info('============= END : rifiutaAllOthers ===========');
-    }
+    // async rifiutaAllOthers(ctx, OffertaID, RichiestaID, fornitore) {
+    //     console.info('============= START : rifiutaAllOthers ===========');
+    //     // 
+    //     // 
+    //     if (fornitore == "Forn1") {
+    //         var range = ctx.stub.getPrivateDataByRange("collectionOfferteForn1", '','');
+    //         //var range = ctx.stub.getPrivateDataByRange("collectionOfferteForn1",'','');
+    //     } else if (fornitore == "Forn2") {
+    //         var range = ctx.stub.getPrivateDataByRange("collectionOfferteForn2", '','');
+    //         //var range = ctx.stub.getPrivateDataByRange("collectionOfferteForn2",'','');
+    //     }
+    //     for await (const { key, value } of range) {
+    //         const strValue = Buffer.from(value).toString('utf8');
+    //         let record;
+    //         try {
+    //             record = JSON.parse(strValue);
+    //         } catch (err) {
+    //             console.log(err);
+    //             record = strValue;
+    //         }
+    //         if (record.OffertaID != OffertaID && record.RichiestaID == RichiestaID) {
+    //             this.rifiutaOfferta(ctx, OffertaID, fornitore);
+    //         }
+    //     }
+    //     console.info('============= END : rifiutaAllOthers ===========');
+    // }
 
     async queryOfferta(ctx, OffertaID, fornitore) {
         // let forn=ctx.stub.invokeChaincode(richiesta,["queryRichiesta",RichiestaID]);
@@ -118,14 +117,35 @@ class Offerta extends Contract {
         return OffertaAsBytes.toString();
     }
 
-    async queryAllOfferta(ctx, RichiestaID, fornitore) {
-        const startKey = 'Offerta0';
-        const endKey = 'Offerta999';
+    async queryAllOfferta(ctx, fornitore) {
         const allResults = [];
         if (fornitore == "Forn1") {
-            var range = ctx.stub.getPrivateDataByRange("collectionOfferteForn1", startKey, endKey);
+            var range = ctx.stub.getPrivateDataByRange("collectionOfferteForn1", '','');
         } else if (fornitore == "Forn2") {
-            var range = ctx.stub.getPrivateDataByRange("collectionOfferteForn2", startKey, endKey);
+            var range = ctx.stub.getPrivateDataByRange("collectionOfferteForn2", '','');
+        }
+        for await (const { key, value } of range) {
+            const strValue = Buffer.from(value).toString('utf8');
+            let record;
+            try {
+                record = JSON.parse(strValue);
+            } catch (err) {
+                console.log(err);
+                record = strValue;
+            }
+            allResults.push({ Key: key, Record: record });
+            
+        }
+        console.info(allResults);
+        return JSON.stringify(allResults);
+    }
+
+    async queryAllOffertaRichiesta(ctx, RichiestaID, fornitore) {
+        const allResults = [];
+        if (fornitore == "Forn1") {
+            var range = ctx.stub.getPrivateDataByRange("collectionOfferteForn1", '','');
+        } else if (fornitore == "Forn2") {
+            var range = ctx.stub.getPrivateDataByRange("collectionOfferteForn2", '','');
         }
         for await (const { key, value } of range) {
             const strValue = Buffer.from(value).toString('utf8');
@@ -142,6 +162,16 @@ class Offerta extends Contract {
         }
         console.info(allResults);
         return JSON.stringify(allResults);
+    }
+
+    async deleteOfferta(ctx,OffertaID,fornitore){
+        console.info('============= START : Delete Offerta ===========');
+        if (fornitore == "Forn1") {
+            await ctx.stub.deletePrivateData("collectionOfferteForn1", OffertaID);
+        } else if (fornitore == "Forn2") {
+            await ctx.stub.deletePrivateData("collectionOfferteForn2", OffertaID);
+        }
+        console.info('============= END : Delete Offerta ===========');
     }
 
 }

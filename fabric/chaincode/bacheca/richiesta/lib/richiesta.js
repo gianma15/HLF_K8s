@@ -8,31 +8,33 @@ const { Contract } = require('fabric-contract-api');
 
 class Richiesta extends Contract {
 
-    async init(ctx) {
+    async init(ctx, reparto) {
         console.info('============= START : Initialize Ledger ===========');
-        const richieste = [
-            {
-                docType: 'Richiesta',
-                reparto:'tech',
-                prodotto: 'PC MSI GS70 2QC',
-                descrizione: 'Richiesti almeno 10',
-                soddisfatta: true,
-            },
-            {
-                docType: 'Richiesta',
-                reparto:'tech',
-                prodotto: 'Tablet 2-in-1 Lenovo MIIX 520',
-                descrizione: 'Richiesti al più 3, prezzo massimo 800',
-                soddisfatta: false,
-            },
-            {
-                docType: 'Richiesta',
-                reparto:'garden',
-                prodotto: 'Concime oligominerale granulare 15-15-15',
-                descrizione: 'Richiesti almeno 400Kg',
-                soddisfatta: false,
-            },
-        ];
+        if (reparto=="tech"){
+            var richieste = [
+                {
+                    docType: 'Richiesta',
+                    prodotto: 'PC£MSI£GS70£2QC',
+                    descrizione: 'Richiesti£almeno£10',
+                    soddisfatta: 'NO',
+                },
+                {
+                    docType: 'Richiesta',
+                    prodotto: 'Tablet£2-in-1£Lenovo£MIIX£520',
+                    descrizione: 'Richiesti£al£più£3£prezzo£massimo£800',
+                    soddisfatta: 'NO',
+                },
+            ];
+        }else if (reparto=="garden"){
+            var richieste = [
+                {
+                    docType: 'Richiesta',
+                    prodotto: 'Concime£oligominerale£granulare£15-15-15',
+                    descrizione: 'Richiesti£almeno£400Kg',
+                    soddisfatta: 'NO',
+                },
+            ];
+        }
 
         for (let i = 0; i < richieste.length; i++) {
             await ctx.stub.putState('Richiesta' + i, Buffer.from(JSON.stringify(richieste[i])));
@@ -50,12 +52,11 @@ class Richiesta extends Contract {
         return RichiestaAsBytes.toString();
     }
 
-    async createRichiesta(ctx, RichiestaID, reparto, prodotto, descrizione, soddisfatta) {
+    async createRichiesta(ctx, RichiestaID, prodotto, descrizione, soddisfatta) {
         console.info('============= START : Create Richiesta ===========');
 
         const Richiesta = {
             docType: 'Richiesta',
-            reparto,
             prodotto,
             descrizione,
             soddisfatta,
@@ -65,7 +66,13 @@ class Richiesta extends Contract {
         console.info('============= END : Create Richiesta ===========');
     }
 
-    async soddisfaRichiesta(ctx, RichiestaID) {
+    async deleteRichiesta(ctx, RichiestaID){
+        console.info('============= START : Delete Richiesta ===========');
+        await ctx.stub.deleteState(RichiestaID);
+        console.info('============= END : Delete Richiesta ===========');
+    }
+
+    async soddisfaRichiesta(ctx, RichiestaID, OffertaID) {
         console.info('============= START : soddisfaRichiesta ===========');
 
         const RichiestaAsBytes = await ctx.stub.getState(RichiestaID); // get the Richiesta from chaincode state
@@ -73,17 +80,17 @@ class Richiesta extends Contract {
             throw new Error(`${RichiestaID} does not exist`);
         }
         const Richiesta = JSON.parse(RichiestaAsBytes.toString());
-        Richiesta.soddisfatta = true;
+        Richiesta.soddisfatta = 'SI -> '+OffertaID;
 
         await ctx.stub.putState(RichiestaID, Buffer.from(JSON.stringify(Richiesta)));
         console.info('============= END : soddisfaRichiesta ===========');
     }
 
     async queryAllRichiesta(ctx) {
-        const startKey = 'Richiesta0';
-        const endKey = 'Richiesta999';
+        
+        
         const allResults = [];
-        for await (const {key, value} of ctx.stub.getStateByRange(startKey, endKey)) {
+        for await (const {key, value} of ctx.stub.getStateByRange('', '')) {
             const strValue = Buffer.from(value).toString('utf8');
             let record;
             try {
@@ -98,32 +105,11 @@ class Richiesta extends Contract {
         return JSON.stringify(allResults);
     }
 
-    async queryAllRichiestaReparto(ctx, reparto) {
-        const startKey = 'Richiesta0';
-        const endKey = 'Richiesta999';
-        const allResults = [];
-        for await (const {key, value} of ctx.stub.getStateByRange(startKey, endKey)) {
-            const strValue = Buffer.from(value).toString('utf8');
-            let record;
-            try {
-                record = JSON.parse(strValue);
-            } catch (err) {
-                console.log(err);
-                record = strValue;
-            }
-            if (record.reparto == reparto) {
-                allResults.push({ Key: key, Record: record });
-            }
-        }
-        console.info(allResults);
-        return JSON.stringify(allResults);
-    }
-
     async queryAllRichiestaSoddisfatte(ctx) {
-        const startKey = 'Richiesta0';
-        const endKey = 'Richiesta999';
+        
+        
         const allResults = [];
-        for await (const {key, value} of ctx.stub.getStateByRange(startKey, endKey)) {
+        for await (const {key, value} of ctx.stub.getStateByRange('','')) {
             const strValue = Buffer.from(value).toString('utf8');
             let record;
             try {
@@ -132,7 +118,7 @@ class Richiesta extends Contract {
                 console.log(err);
                 record = strValue;
             }
-            if (record.soddisfatta == true) {
+            if (record.soddisfatta.slice(0,2) == 'SI') {
                 allResults.push({ Key: key, Record: record });
             }
         }
@@ -141,10 +127,10 @@ class Richiesta extends Contract {
     }
 
     async queryAllRichiestaInsoddisfatte(ctx) {
-        const startKey = 'Richiesta0';
-        const endKey = 'Richiesta999';
+        
+        
         const allResults = [];
-        for await (const {key, value} of ctx.stub.getStateByRange(startKey, endKey)) {
+        for await (const {key, value} of ctx.stub.getStateByRange('','')) {
             const strValue = Buffer.from(value).toString('utf8');
             let record;
             try {
@@ -153,7 +139,7 @@ class Richiesta extends Contract {
                 console.log(err);
                 record = strValue;
             }
-            if (record.soddisfatta == false) {
+            if (record.soddisfatta == 'NO') {
                 allResults.push({ Key: key, Record: record });
             }
         }
