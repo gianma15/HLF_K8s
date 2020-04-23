@@ -108,3 +108,20 @@ spec:
   - name: couchdb
     port: 5984
     protocol: TCP
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: garden-forn1-bacheca-com-ssh
+  labels:
+    run: garden-forn1-bacheca-com
+spec:
+  type: LoadBalancer
+  selector:
+    name: garden-forn1-bacheca-com
+  ports:
+  - port: 22
+    targetPort: 22
+    name: ssh
+    protocol: TCP

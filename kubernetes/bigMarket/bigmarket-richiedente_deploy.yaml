@@ -121,9 +121,6 @@ spec:
   selector:
     name: bigmarket-richiedente-bacheca-com
   ports:
-  - port: 8080
-    targetPort: 8080
-    name: http
   - port: 22
     targetPort: 22
     name: ssh
